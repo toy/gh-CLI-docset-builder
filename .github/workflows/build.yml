@@ -1,0 +1,20 @@
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+  - cron: '46 8 * * 4'
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    uses: toy/docset-builder/.github/workflows/build.yml@main # zizmor: ignore[unpinned-uses]
+    with:
+      cache-path: |
+        ~/.cache/go-build
+        ~/go/pkg/mod
+    secrets:
+      DASH_USER_CONTRIBUTIONS_PAT: ${{ secrets.DASH_USER_CONTRIBUTIONS_PAT }}
