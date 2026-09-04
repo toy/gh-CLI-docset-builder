@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_codespace_create"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-codespace-create" data-element-type="Command">gh codespace create</h2>
+
+<p>Create a codespace</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh codespace create [flags]
+</code></pre></div></div>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+<code>-b</code>, 
+		<code>--branch &lt;string&gt;</code>
+</dt>
+	<dd>Repository branch</dd>
+
+	<dt>
+		<code>--default-permissions</code>
+</dt>
+	<dd>Do not prompt to accept additional permissions requested by the codespace</dd>
+
+	<dt>
+		<code>--devcontainer-path &lt;string&gt;</code>
+</dt>
+	<dd>Path to the devcontainer.json file to use when creating codespace</dd>
+
+	<dt>
+<code>-d</code>, 
+		<code>--display-name &lt;string&gt;</code>
+</dt>
+	<dd>Display name for the codespace (48 characters or less)</dd>
+
+	<dt>
+		<code>--idle-timeout &lt;duration&gt;</code>
+</dt>
+	<dd>Allowed inactivity before codespace is stopped, e.g. "10m", "1h"</dd>
+
+	<dt>
+<code>-l</code>, 
+		<code>--location &lt;string&gt;</code>
+</dt>
+	<dd>Location: {EastUs|SouthEastAsia|WestEurope|WestUs2} (determined automatically if not provided)</dd>
+
+	<dt>
+<code>-m</code>, 
+		<code>--machine &lt;string&gt;</code>
+</dt>
+	<dd>Hardware specifications for the VM</dd>
+
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;string&gt;</code>
+</dt>
+	<dd>Repository name with owner: user/repo</dd>
+
+	<dt>
+		<code>--retention-period &lt;duration&gt;</code>
+</dt>
+	<dd>Allowed time after shutting down before the codespace is automatically deleted (maximum 30 days), e.g. "1h", "72h"</dd>
+
+	<dt>
+<code>-s</code>, 
+		<code>--status</code>
+</dt>
+	<dd>Show status of post-create command and dotfiles</dd>
+
+	<dt>
+<code>-w</code>, 
+		<code>--web</code>
+</dt>
+	<dd>Create codespace from browser, cannot be used with --display-name, --idle-timeout, or --retention-period</dd>
+</dl>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_codespace.html">gh codespace</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

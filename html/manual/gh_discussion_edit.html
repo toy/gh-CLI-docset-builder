@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_discussion_edit"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-discussion-edit" data-element-type="Command">gh discussion edit</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh discussion edit {&lt;number&gt; | &lt;discussion-url&gt;} [flags]
+</code></pre></div></div>
+
+<p>Edit a GitHub Discussion.</p>
+
+<p>Without flags, the command runs interactively when connected to a terminal.
+Use flags to update specific fields non-interactively.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--add-label &lt;name&gt;</code>
+</dt>
+	<dd>Add labels by name</dd>
+
+	<dt>
+<code>-b</code>, 
+		<code>--body &lt;string&gt;</code>
+</dt>
+	<dd>New body for the discussion</dd>
+
+	<dt>
+<code>-F</code>, 
+		<code>--body-file &lt;string&gt;</code>
+</dt>
+	<dd>Read body text from file (use "-" to read from standard input)</dd>
+
+	<dt>
+<code>-c</code>, 
+		<code>--category &lt;string&gt;</code>
+</dt>
+	<dd>New category name or slug for the discussion</dd>
+
+	<dt>
+		<code>--remove-label &lt;name&gt;</code>
+</dt>
+	<dd>Remove labels by name</dd>
+
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--title &lt;string&gt;</code>
+</dt>
+	<dd>New title for the discussion</dd>
+</dl>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Edit interactively</span>
+<span class="nv">$ </span>gh discussion edit 123
+
+<span class="c"># Update title, body, and category</span>
+<span class="nv">$ </span>gh discussion edit 123 <span class="nt">--title</span> <span class="s2">"Updated title"</span> <span class="nt">--body</span> <span class="s2">"Updated body"</span> <span class="nt">--category</span> <span class="s2">"Ideas"</span>
+
+<span class="c"># Update body from a file</span>
+<span class="nv">$ </span>gh discussion edit 123 <span class="nt">--body-file</span> body.md
+
+<span class="c"># Add and remove labels</span>
+<span class="nv">$ </span>gh discussion edit 123 <span class="nt">--add-label</span> <span class="s2">"bug,help wanted"</span> <span class="nt">--remove-label</span> <span class="s2">"stale"</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_discussion.html">gh discussion</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_help_formatting"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-formatting" data-element-type="Command">gh formatting</h2>
+
+<p>By default, the result of <code class="language-plaintext highlighter-rouge">gh</code> commands are output in line-based plain text format.
+Some commands support passing the <code class="language-plaintext highlighter-rouge">--json</code> flag, which converts the output to JSON format.
+Once in JSON, the output can be further formatted according to a required formatting string by
+adding either the <code class="language-plaintext highlighter-rouge">--jq</code> or <code class="language-plaintext highlighter-rouge">--template</code> flag. This is useful for selecting a subset of data,
+creating new data structures, displaying the data in a different format, or as input to another
+command line script.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">--json</code> flag requires a comma separated list of fields to fetch. To view the possible JSON
+field names for a command omit the string argument to the <code class="language-plaintext highlighter-rouge">--json</code> flag when you run the command.
+Note that you must pass the <code class="language-plaintext highlighter-rouge">--json</code> flag and field names to use the <code class="language-plaintext highlighter-rouge">--jq</code> or <code class="language-plaintext highlighter-rouge">--template</code> flags.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">--jq</code> flag requires a string argument in jq query syntax, and will only print
+those JSON values which match the query. jq queries can be used to select elements from an
+array, fields from an object, create a new array, and more. The <code class="language-plaintext highlighter-rouge">jq</code> utility does not need
+to be installed on the system to use this formatting directive. When connected to a terminal,
+the output is automatically pretty-printed. To learn about jq query syntax, see:
+<a href="https://jqlang.github.io/jq/manual/" class="external">https://jqlang.github.io/jq/manual/</a></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">--template</code> flag requires a string argument in Go template syntax, and will only print
+those JSON values which match the query.</p>
+
+<p>In addition to the Go template functions in the standard library, the following functions can be used
+with this formatting directive:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">autocolor</code>: like <code class="language-plaintext highlighter-rouge">color</code>, but only emits color to terminals</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">color &lt;style&gt; &lt;input&gt;</code>: colorize input using <a href="https://github.com/mgutz/ansi" class="external">https://github.com/mgutz/ansi</a>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">join &lt;sep&gt; &lt;list&gt;</code>: joins values in the list using a separator</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">pluck &lt;field&gt; &lt;list&gt;</code>: collects values of a field from all items in the input</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">tablerow &lt;fields&gt;...</code>: aligns fields in output vertically as a table</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">tablerender</code>: renders fields added by tablerow in place</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">timeago &lt;time&gt;</code>: renders a timestamp as relative to now</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">timefmt &lt;format&gt; &lt;time&gt;</code>: formats a timestamp using Go's <code class="language-plaintext highlighter-rouge">Time.Format</code> function</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">truncate &lt;length&gt; &lt;input&gt;</code>: ensures input fits within length</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">hyperlink &lt;url&gt; &lt;text&gt;</code>: renders a terminal hyperlink</li>
+</ul>
+
+<p>The following Sprig template library functions can also be used with this formatting directive:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">contains &lt;arg&gt; &lt;string&gt;</code>: checks if <code class="language-plaintext highlighter-rouge">string</code> contains <code class="language-plaintext highlighter-rouge">arg</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">hasPrefix &lt;prefix&gt; &lt;string&gt;</code>: checks if <code class="language-plaintext highlighter-rouge">string</code> starts with <code class="language-plaintext highlighter-rouge">prefix</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">hasSuffix &lt;suffix&gt; &lt;string&gt;</code>: checks if <code class="language-plaintext highlighter-rouge">string</code> ends with <code class="language-plaintext highlighter-rouge">suffix</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">regexMatch &lt;regex&gt; &lt;string&gt;</code>: checks if <code class="language-plaintext highlighter-rouge">string</code> has any matches for <code class="language-plaintext highlighter-rouge">regex</code>
+</li>
+</ul>
+
+<p>For more information about the Sprig library, see <a href="https://masterminds.github.io/sprig/" class="external">https://masterminds.github.io/sprig/</a>.</p>
+
+<p>To learn more about Go templates, see: <a href="https://golang.org/pkg/text/template/" class="external">https://golang.org/pkg/text/template/</a>.</p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Default output format</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list
+Showing 23 of 23 open pull requests <span class="k">in </span>cli/cli
+
+<span class="c">#123  A helpful contribution          contribution-branch              about 1 day ago</span>
+<span class="c">#124  Improve the docs                docs-branch                      about 2 days ago</span>
+<span class="c">#125  An exciting new feature         feature-branch                   about 2 days ago</span>
+
+
+<span class="c"># Adding the --json flag with a list of field names</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list <span class="nt">--json</span> number,title,author
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">"author"</span>: <span class="o">{</span>
+      <span class="s2">"login"</span>: <span class="s2">"monalisa"</span>
+    <span class="o">}</span>,
+    <span class="s2">"number"</span>: 123,
+    <span class="s2">"title"</span>: <span class="s2">"A helpful contribution"</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"author"</span>: <span class="o">{</span>
+      <span class="s2">"login"</span>: <span class="s2">"codercat"</span>
+    <span class="o">}</span>,
+    <span class="s2">"number"</span>: 124,
+    <span class="s2">"title"</span>: <span class="s2">"Improve the docs"</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">"author"</span>: <span class="o">{</span>
+      <span class="s2">"login"</span>: <span class="s2">"cli-maintainer"</span>
+    <span class="o">}</span>,
+    <span class="s2">"number"</span>: 125,
+    <span class="s2">"title"</span>: <span class="s2">"An exciting new feature"</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+
+
+<span class="c"># Adding the --jq flag and selecting fields from the array</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list <span class="nt">--json</span> author <span class="nt">--jq</span> <span class="s1">'.[].author.login'</span>
+monalisa
+codercat
+cli-maintainer
+
+
+<span class="c"># --jq can be used to implement more complex filtering and output changes</span>
+<span class="nv">$ </span>gh issue list <span class="nt">--json</span> number,title,labels <span class="nt">--jq</span> <span class="se">\</span>
+  <span class="s1">'map(select((.labels | length) &gt; 0))    # must have labels
+  | map(.labels = (.labels | map(.name))) # show only the label names
+  | .[:3]                                 # select the first 3 results'</span>
+  <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"labels"</span>: <span class="o">[</span>
+        <span class="s2">"enhancement"</span>,
+        <span class="s2">"needs triage"</span>
+      <span class="o">]</span>,
+      <span class="s2">"number"</span>: 123,
+      <span class="s2">"title"</span>: <span class="s2">"A helpful contribution"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"labels"</span>: <span class="o">[</span>
+        <span class="s2">"help wanted"</span>,
+        <span class="s2">"docs"</span>,
+        <span class="s2">"good first issue"</span>
+      <span class="o">]</span>,
+      <span class="s2">"number"</span>: 125,
+      <span class="s2">"title"</span>: <span class="s2">"Improve the docs"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"labels"</span>: <span class="o">[</span>
+        <span class="s2">"enhancement"</span>,
+      <span class="o">]</span>,
+      <span class="s2">"number"</span>: 7221,
+      <span class="s2">"title"</span>: <span class="s2">"An exciting new feature"</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+
+
+<span class="c"># Using the --template flag with the hyperlink helper</span>
+<span class="nv">$ </span>gh issue list <span class="nt">--json</span> title,url <span class="nt">--template</span> <span class="s1">'{{range .}}{{hyperlink .url .title}}{{"\n"}}{{end}}'</span>
+
+
+<span class="c"># Adding the --template flag and modifying the display format</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list <span class="nt">--json</span> number,title,headRefName,updatedAt <span class="nt">--template</span> <span class="se">\</span>
+	<span class="s1">'{{range .}}{{tablerow (printf "#%v" .number | autocolor "green") .title .headRefName (timeago .updatedAt)}}{{end}}'</span>
+
+<span class="c">#123  A helpful contribution      contribution-branch       about 1 day ago</span>
+<span class="c">#124  Improve the docs            docs-branch               about 2 days ago</span>
+<span class="c">#125  An exciting new feature     feature-branch            about 2 days ago</span>
+
+
+<span class="c"># A more complex example with the --template flag which formats a pull request using multiple tables with headers</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>view 3519 <span class="nt">--json</span> number,title,body,reviews,assignees <span class="nt">--template</span> <span class="se">\</span>
+<span class="s1">'{{printf "#%v" .number}} {{.title}}
+
+{{.body}}
+
+{{tablerow "ASSIGNEE" "NAME"}}{{range .assignees}}{{tablerow .login .name}}{{end}}{{tablerender}}
+{{tablerow "REVIEWER" "STATE" "COMMENT"}}{{range .reviews}}{{tablerow .author.login .state .body}}{{end}}
+'</span>
+
+<span class="c">#3519 Add table and helper template functions</span>
+
+Resolves <span class="c">#3488</span>
+
+ASSIGNEE  NAME
+mislav    Mislav Marohnić
+
+
+REVIEWER  STATE              COMMENT
+mislav    COMMENTED          This is going along great! Thanks <span class="k">for </span>working on this ❤️</code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh.html">gh</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

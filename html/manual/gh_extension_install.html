@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_extension_install"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-extension-install" data-element-type="Command">gh extension install</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh extension install &lt;repository&gt; [flags]
+</code></pre></div></div>
+
+<p>Install a GitHub CLI extension from a GitHub or local repository.</p>
+
+<p>For GitHub repositories, the repository argument can be specified in
+<code class="language-plaintext highlighter-rouge">OWNER/REPO</code> format or as a full repository URL.
+The URL format is useful when the repository is not hosted on <code class="language-plaintext highlighter-rouge">github.com</code>.</p>
+
+<p>For remote repositories, the GitHub CLI first looks for the release artifacts assuming
+that it's a binary extension i.e. prebuilt binaries provided as part of the release.
+In the absence of a release, the repository itself is cloned assuming that it's a
+script extension i.e. prebuilt executable or script exists on its root.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">--pin</code> flag may be used to specify a tag or commit for binary and script
+extensions respectively, the latest version is used otherwise.</p>
+
+<p>For local repositories, often used while developing extensions, use <code class="language-plaintext highlighter-rouge">.</code> as the
+value of the repository argument. Note the following:</p>
+
+<ul>
+  <li>After installing an extension from a locally cloned repository, the GitHub CLI will
+manage this extension as a symbolic link (or equivalent mechanism on Windows) pointing
+to an executable file with the same name as the repository in the repository's root.
+For example, if the repository is named <code class="language-plaintext highlighter-rouge">gh-foobar</code>, the symbolic link will point
+to <code class="language-plaintext highlighter-rouge">gh-foobar</code> in the extension repository's root.</li>
+  <li>When executing the extension, the GitHub CLI will run the executable file found
+by following the symbolic link. If no executable file is found, the extension
+will fail to execute.</li>
+  <li>If the extension is precompiled, the executable file must be built manually and placed
+in the repository's root.</li>
+</ul>
+
+<p>For the list of available extensions, see <a href="https://github.com/topics/gh-extension" class="external">https://github.com/topics/gh-extension</a>.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--force</code>
+</dt>
+	<dd>Force upgrade extension, or ignore if latest already installed</dd>
+
+	<dt>
+		<code>--pin &lt;string&gt;</code>
+</dt>
+	<dd>Pin extension to a release tag or commit ref</dd>
+</dl>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Install an extension from a remote repository hosted on GitHub</span>
+<span class="nv">$ </span>gh extension <span class="nb">install </span>owner/gh-extension
+
+<span class="c"># Install an extension from a remote repository via full URL</span>
+<span class="nv">$ </span>gh extension <span class="nb">install </span>https://my.ghes.com/owner/gh-extension
+
+<span class="c"># Install an extension from a local repository in the current working directory</span>
+<span class="nv">$ </span>gh extension <span class="nb">install</span> .</code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_extension.html">gh extension</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

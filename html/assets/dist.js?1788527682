@@ -1,0 +1,328 @@
+/* GENERATED WITH: npm run dist */
+(function () {
+  'use strict';
+
+  window.GitHub = {};
+
+  var keystrokeDelay = 60; // ms between keystrokes
+  var outputDelay = 300; // ms before command output is shown
+  var cycleDelay = 5000; // ms between going to next command
+  var cycleTimeout = null; // timeout
+  var commandIndex = 1; // start at first command
+
+  var numCommands = document.querySelectorAll(".command-header .command").length;
+  var carouselControlButton = document.getElementById("carousel-control-button");
+  var playButton = document.getElementById("play-button");
+  var pauseButton = document.getElementById("pause-button");
+
+  var mobileNavContainer = document.getElementById("mobile-nav-container");
+
+  function closeMobileNav(event) {
+    if (mobileNavContainer.hasAttribute("open")) {
+      if (!mobileNavContainer.contains(event.relatedTarget) && event.relatedTarget != null) {
+        mobileNavContainer.removeAttribute("open");
+      }
+    }
+  }
+
+  // The container only exists on the /manual page
+  if (mobileNavContainer != null) {
+    mobileNavContainer.addEventListener("focusout", closeMobileNav);
+  }
+
+  const prefersReducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+    window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+
+  function showCommand(cycle = true) {
+    if (commandIndex > numCommands) { commandIndex = 1; }
+
+    // clear all timeouts
+    clearTimeout(cycleTimeout);
+
+    // hide previous commands
+    Array.from(document.querySelectorAll(".command")).forEach(function (el) {
+      el.classList.add("d-none");
+    });
+
+    // remove hidden attribute from terminal
+    Array.from(
+      document.querySelectorAll(".cli-window .command-panel")
+    ).forEach(function (el) {
+      el.removeAttribute("hidden");
+    });
+
+    // show current command while respecting animated ones
+    Array.from(document.querySelectorAll(".command-" + commandIndex)).forEach(
+      function (el) {
+        if (el.classList.contains("type-animate-done")) { return; }
+        if (el.classList.contains("type-animate")) {
+          typeAnimate(el, function () {
+            var doneEl = el.nextElementSibling;
+            if (doneEl && doneEl.classList.contains("type-animate-done")) {
+              setTimeout(function () {
+                doneEl.classList.remove("d-none");
+              }, outputDelay);
+            }
+          });
+        }
+        el.classList.remove("d-none");
+      }
+    );
+
+    commandIndex += 1;
+
+    if (cycle) {
+      cycleTimeout = setTimeout(function () {
+        showCommand();
+      }, cycleDelay);
+    }
+  }
+
+  function typeAnimate(el, callback) {
+    var chars = el.textContent.split("");
+    el.textContent = "";
+
+    var typeIndex = 1;
+    var interval = setInterval(function () {
+      typeIndex += 1;
+      el.textContent = chars.slice(0, typeIndex).join("");
+      if (typeIndex > chars.length) {
+        clearInterval(interval);
+        interval = null;
+        callback();
+      }
+    }, keystrokeDelay);
+  }
+
+  function pauseAnimation() {
+    clearTimeout(cycleTimeout);
+    if (playButton != null && pauseButton != null && carouselControlButton != null) {
+      pauseButton.setAttribute("hidden", "true");
+      playButton.removeAttribute("hidden");
+      carouselControlButton.setAttribute("aria-label", "play-animation");
+    }
+  }
+
+  function playAnimation() {
+    showCommand();
+    if (playButton != null && pauseButton != null && carouselControlButton != null) {
+      playButton.setAttribute("hidden", "true");
+      pauseButton.removeAttribute("hidden");
+      carouselControlButton.setAttribute("aria-label", "pause-animation");
+    }
+  }
+
+  function toggleAnimation(event) {
+    event.preventDefault();
+    if (playButton.hidden) {
+      pauseAnimation();
+    } else {
+      playAnimation();
+    }
+  }
+
+  // The carouselControlButton only exists on the landing page
+  if (carouselControlButton != null) {
+    carouselControlButton.addEventListener("click", toggleAnimation);
+  }
+
+
+  if (prefersReducedMotion) {
+    pauseAnimation();
+    commandIndex = 2;
+    Array.from(document.querySelectorAll(".command-1")).forEach(
+      function (el) {
+        el.classList.remove("d-none");
+      }
+    );
+  } else {
+    playAnimation();
+  }
+
+  // Workaround for Safari not natively making overflowing elements keyboard-focusable.
+  // Chromium browsers handle this automatically, but Safari requires an explicit
+  // tabindex="0". This script conditionally adds it only to <pre> elements that
+  // actually overflow, so non-overflowing blocks remain non-focusable as expected.
+  // See: https://bugs.webkit.org/show_bug.cgi?id=247765
+
+  function updateOverflowAccessibility() {
+    var preElements = document.querySelectorAll(".markdown-body pre");
+    for (var i = 0; i < preElements.length; i++) {
+      var el = preElements[i];
+      var isOverflowing =
+        el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight;
+      if (isOverflowing) {
+        el.setAttribute("tabindex", "0");
+      } else {
+        el.removeAttribute("tabindex");
+      }
+    }
+  }
+
+  var resizeRAF = null;
+  function onResize() {
+    if (resizeRAF) return;
+    resizeRAF = requestAnimationFrame(function () {
+      resizeRAF = null;
+      updateOverflowAccessibility();
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateOverflowAccessibility);
+  } else {
+    updateOverflowAccessibility();
+  }
+  window.addEventListener("resize", onResize);
+
+  // Install widget: copy-to-clipboard, dropdown switching, OS detection
+
+  function showCopiedState(btn) {
+    btn.classList.add("copied");
+    setTimeout(function () {
+      btn.classList.remove("copied");
+    }, 2000);
+  }
+
+  function fallbackCopyText(text, btn) {
+    var textarea = document.createElement("textarea");
+    var copied = false;
+
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "absolute";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+
+    try {
+      copied = document.execCommand("copy");
+    } catch (e) {
+      copied = false;
+    }
+
+    document.body.removeChild(textarea);
+
+    if (copied) {
+      showCopiedState(btn);
+      return;
+    }
+
+    window.prompt("Copy this command manually:", text);
+  }
+
+  // Copy button behavior
+  document.querySelectorAll(".install-cta-copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var command = btn.getAttribute("data-command");
+      if (!command) return;
+
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+        navigator.clipboard.writeText(command).then(function () {
+          showCopiedState(btn);
+        }).catch(function () {
+          fallbackCopyText(command, btn);
+        });
+        return;
+      }
+
+      fallbackCopyText(command, btn);
+    });
+  });
+
+  // Dropdown option selection
+  document.querySelectorAll(".install-widget").forEach(function (widget) {
+    var dropdown = widget.querySelector(".install-method-dropdown");
+    if (!dropdown) return;
+
+    var commandEl = widget.querySelector(".install-command");
+    var copyBtn = widget.querySelector(".install-cta-copy");
+    var downloadBtn = widget.querySelector(".install-cta-download");
+    var label = widget.querySelector(".install-method-label");
+
+    // Command options (buttons with data-command) — show command + Copy
+    dropdown.querySelectorAll("button.install-option[data-command]").forEach(function (option) {
+      option.addEventListener("click", function (e) {
+        e.preventDefault();
+        var command = option.getAttribute("data-command");
+
+        commandEl.textContent = command;
+        commandEl.classList.remove("d-none");
+        copyBtn.setAttribute("data-command", command);
+        copyBtn.classList.remove("d-none");
+        downloadBtn.classList.add("d-none");
+        label.textContent = option.getAttribute("data-label");
+
+        dropdown.removeAttribute("open");
+      });
+    });
+
+    // Download options (anchors without data-command) — show Install CTA
+    dropdown.querySelectorAll("a.install-option").forEach(function (option) {
+      option.addEventListener("click", function (e) {
+        e.preventDefault();
+        var href = option.getAttribute("href");
+        var optionLabel = option.getAttribute("data-label");
+
+        commandEl.classList.add("d-none");
+        copyBtn.classList.add("d-none");
+        downloadBtn.setAttribute("href", href);
+        downloadBtn.classList.remove("d-none");
+        label.textContent = optionLabel;
+
+        dropdown.removeAttribute("open");
+      });
+    });
+  });
+
+  // Close dropdowns on outside click or Escape key
+  document.addEventListener("click", function (e) {
+    document.querySelectorAll(".install-method-dropdown[open]").forEach(function (dropdown) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.removeAttribute("open");
+      }
+    });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".install-method-dropdown[open]").forEach(function (dropdown) {
+        dropdown.removeAttribute("open");
+      });
+    }
+  });
+
+  // Set default install method based on OS (skip mobile devices)
+  (function () {
+    var ua = navigator.userAgent;
+    var isMobile = /iPhone|iPad|iPod|Android/.test(ua);
+    if (isMobile) return;
+
+    var os = "";
+    if (ua.indexOf("Win") != -1) os = "windows";
+    if (ua.indexOf("Mac") != -1) os = "mac";
+    if (ua.indexOf("Linux") != -1) os = "linux";
+
+    var defaults = {
+      mac: { command: "brew install gh", label: "Install with Homebrew" },
+      windows: { command: "winget install --id GitHub.cli", label: "Install with WinGet" },
+      linux: { command: "brew install gh", label: "Install with Homebrew" },
+    };
+
+    var selected = defaults[os];
+    if (!selected) return;
+
+    document.querySelectorAll(".install-widget").forEach(function (widget) {
+      var commandEl = widget.querySelector(".install-command");
+      var copyBtn = widget.querySelector(".install-cta-copy");
+      var label = widget.querySelector(".install-method-label");
+
+      if (commandEl) commandEl.textContent = selected.command;
+      if (copyBtn) copyBtn.setAttribute("data-command", selected.command);
+      if (label) label.textContent = selected.label;
+    });
+  })();
+
+})();

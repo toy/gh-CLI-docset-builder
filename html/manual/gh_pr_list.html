@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_pr_list"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-pr-list" data-element-type="Command">gh pr list</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh pr list [flags]
+</code></pre></div></div>
+
+<p>List pull requests in a GitHub repository. By default, this only lists open PRs.</p>
+
+<p>The search query syntax is documented here:
+<a href="https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests" class="external">https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests</a></p>
+
+<p>On supported GitHub hosts, advanced issue search syntax can be used in the
+<code class="language-plaintext highlighter-rouge">--search</code> query. For more information about advanced issue search, see:
+<a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/filtering-and-searching-issues-and-pull-requests#building-advanced-filters-for-issues" class="external">https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/filtering-and-searching-issues-and-pull-requests#building-advanced-filters-for-issues</a></p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--app &lt;string&gt;</code>
+</dt>
+	<dd>Filter by GitHub App author</dd>
+
+	<dt>
+<code>-a</code>, 
+		<code>--assignee &lt;string&gt;</code>
+</dt>
+	<dd>Filter by assignee</dd>
+
+	<dt>
+<code>-A</code>, 
+		<code>--author &lt;string&gt;</code>
+</dt>
+	<dd>Filter by author (use --app to filter by a GitHub App)</dd>
+
+	<dt>
+<code>-B</code>, 
+		<code>--base &lt;string&gt;</code>
+</dt>
+	<dd>Filter by base branch</dd>
+
+	<dt>
+<code>-d</code>, 
+		<code>--draft</code>
+</dt>
+	<dd>Filter by draft state</dd>
+
+	<dt>
+<code>-H</code>, 
+		<code>--head &lt;string&gt;</code>
+</dt>
+	<dd>Filter by head branch ("&lt;owner&gt;:&lt;branch&gt;" syntax not supported)</dd>
+
+	<dt>
+<code>-q</code>, 
+		<code>--jq &lt;expression&gt;</code>
+</dt>
+	<dd>Filter JSON output using a jq expression</dd>
+
+	<dt>
+		<code>--json &lt;fields&gt;</code>
+</dt>
+	<dd>Output JSON with the specified fields</dd>
+
+	<dt>
+<code>-l</code>, 
+		<code>--label &lt;strings&gt;</code>
+</dt>
+	<dd>Filter by label</dd>
+
+	<dt>
+<code>-L</code>, 
+		<code>--limit &lt;int&gt; (default 30)</code>
+</dt>
+	<dd>Maximum number of items to fetch</dd>
+
+	<dt>
+<code>-S</code>, 
+		<code>--search &lt;query&gt;</code>
+</dt>
+	<dd>Search pull requests with query</dd>
+
+	<dt>
+<code>-s</code>, 
+		<code>--state &lt;string&gt; (default "open")</code>
+</dt>
+	<dd>Filter by state: {open|closed|merged|all}</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--template &lt;string&gt;</code>
+</dt>
+	<dd>Format JSON output using a Go template; see "gh help formatting"</dd>
+
+	<dt>
+<code>-w</code>, 
+		<code>--web</code>
+</dt>
+	<dd>List pull requests in the web browser</dd>
+</dl>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<dl class="flags">
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+</dl>
+
+<h3 id="aliases">ALIASES</h3>
+
+<p>gh pr ls</p>
+
+<h3 id="json-fields">JSON Fields</h3>
+
+<p><code class="language-plaintext highlighter-rouge">additions</code>, <code class="language-plaintext highlighter-rouge">assignees</code>, <code class="language-plaintext highlighter-rouge">author</code>, <code class="language-plaintext highlighter-rouge">autoMergeRequest</code>, <code class="language-plaintext highlighter-rouge">baseRefName</code>, <code class="language-plaintext highlighter-rouge">baseRefOid</code>, <code class="language-plaintext highlighter-rouge">body</code>, <code class="language-plaintext highlighter-rouge">changedFiles</code>, <code class="language-plaintext highlighter-rouge">closed</code>, <code class="language-plaintext highlighter-rouge">closedAt</code>, <code class="language-plaintext highlighter-rouge">closingIssuesReferences</code>, <code class="language-plaintext highlighter-rouge">comments</code>, <code class="language-plaintext highlighter-rouge">commits</code>, <code class="language-plaintext highlighter-rouge">createdAt</code>, <code class="language-plaintext highlighter-rouge">deletions</code>, <code class="language-plaintext highlighter-rouge">files</code>, <code class="language-plaintext highlighter-rouge">fullDatabaseId</code>, <code class="language-plaintext highlighter-rouge">headRefName</code>, <code class="language-plaintext highlighter-rouge">headRefOid</code>, <code class="language-plaintext highlighter-rouge">headRepository</code>, <code class="language-plaintext highlighter-rouge">headRepositoryOwner</code>, <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">isCrossRepository</code>, <code class="language-plaintext highlighter-rouge">isDraft</code>, <code class="language-plaintext highlighter-rouge">labels</code>, <code class="language-plaintext highlighter-rouge">latestReviews</code>, <code class="language-plaintext highlighter-rouge">maintainerCanModify</code>, <code class="language-plaintext highlighter-rouge">mergeCommit</code>, <code class="language-plaintext highlighter-rouge">mergeStateStatus</code>, <code class="language-plaintext highlighter-rouge">mergeable</code>, <code class="language-plaintext highlighter-rouge">mergedAt</code>, <code class="language-plaintext highlighter-rouge">mergedBy</code>, <code class="language-plaintext highlighter-rouge">milestone</code>, <code class="language-plaintext highlighter-rouge">number</code>, <code class="language-plaintext highlighter-rouge">potentialMergeCommit</code>, <code class="language-plaintext highlighter-rouge">projectCards</code>, <code class="language-plaintext highlighter-rouge">projectItems</code>, <code class="language-plaintext highlighter-rouge">reactionGroups</code>, <code class="language-plaintext highlighter-rouge">reviewDecision</code>, <code class="language-plaintext highlighter-rouge">reviewRequests</code>, <code class="language-plaintext highlighter-rouge">reviews</code>, <code class="language-plaintext highlighter-rouge">state</code>, <code class="language-plaintext highlighter-rouge">statusCheckRollup</code>, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">updatedAt</code>, <code class="language-plaintext highlighter-rouge">url</code></p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># List PRs authored by you</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list <span class="nt">--author</span> <span class="s2">"@me"</span>
+
+<span class="c"># List PRs opened by a GitHub App such as Dependabot</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list <span class="nt">--app</span> dependabot
+
+<span class="c"># List PRs with a specific head branch name</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list <span class="nt">--head</span> <span class="s2">"typo"</span>
+
+<span class="c"># List only PRs with all of the given labels</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list <span class="nt">--label</span> bug <span class="nt">--label</span> <span class="s2">"priority 1"</span>
+
+<span class="c"># Filter PRs using search syntax</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list <span class="nt">--search</span> <span class="s2">"status:success review:required"</span>
+
+<span class="c"># Find a PR that introduced a given commit</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>list <span class="nt">--search</span> <span class="s2">"&lt;SHA&gt;"</span> <span class="nt">--state</span> merged</code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_pr.html">gh pr</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+  
+    <h3>In use</h3>
+  
+  
+
+  <h4>Default behavior</h4>
+
+  <p>You will see the most recent 30 open items.</p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a list of open pull requests</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr list
+
+Pull requests for owner/repo
+
+<span class="green">#14</span>  Upgrade to Prettier 1.19                           <span class="cyan">prettier</span>
+<span class="green">#14</span>  Extend arrow navigation in lists for MacOS         <span class="cyan">arrow-nav</span>
+<span class="green">#13</span>  Add Support for Windows Automatic Dark Mode        <span class="cyan">dark-mode</span>
+<span class="green">#8</span>   Create and use keyboard shortcut react component   <span class="cyan">shortcut</span>
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+
+  <h4>Filtering with flags</h4>
+  <p>You can use flags to filter the list for your specific use cases.</p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a list of closed pull requests assigned to a user</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr list --state closed --assignee user
+
+Pull requests for owner/repo
+
+<span class="red">#13</span>  Upgrade to Electron 7         <span class="cyan">electron-7</span>
+<span class="red">#8</span>   Release Notes Writing Guide   <span class="cyan">release-notes</span>
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_pr_view"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-pr-view" data-element-type="Command">gh pr view</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh pr view [&lt;number&gt; | &lt;url&gt; | &lt;branch&gt;] [flags]
+</code></pre></div></div>
+
+<p>Display the title, body, and other information about a pull request.</p>
+
+<p>Without an argument, the pull request that belongs to the current branch
+is displayed.</p>
+
+<p>With <code class="language-plaintext highlighter-rouge">--web</code> flag, open the pull request in a web browser instead.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+<code>-c</code>, 
+		<code>--comments</code>
+</dt>
+	<dd>View pull request comments</dd>
+
+	<dt>
+<code>-q</code>, 
+		<code>--jq &lt;expression&gt;</code>
+</dt>
+	<dd>Filter JSON output using a jq expression</dd>
+
+	<dt>
+		<code>--json &lt;fields&gt;</code>
+</dt>
+	<dd>Output JSON with the specified fields</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--template &lt;string&gt;</code>
+</dt>
+	<dd>Format JSON output using a Go template; see "gh help formatting"</dd>
+
+	<dt>
+<code>-w</code>, 
+		<code>--web</code>
+</dt>
+	<dd>Open a pull request in the browser</dd>
+</dl>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<dl class="flags">
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+</dl>
+
+<h3 id="json-fields">JSON Fields</h3>
+
+<p><code class="language-plaintext highlighter-rouge">additions</code>, <code class="language-plaintext highlighter-rouge">assignees</code>, <code class="language-plaintext highlighter-rouge">author</code>, <code class="language-plaintext highlighter-rouge">autoMergeRequest</code>, <code class="language-plaintext highlighter-rouge">baseRefName</code>, <code class="language-plaintext highlighter-rouge">baseRefOid</code>, <code class="language-plaintext highlighter-rouge">body</code>, <code class="language-plaintext highlighter-rouge">changedFiles</code>, <code class="language-plaintext highlighter-rouge">closed</code>, <code class="language-plaintext highlighter-rouge">closedAt</code>, <code class="language-plaintext highlighter-rouge">closingIssuesReferences</code>, <code class="language-plaintext highlighter-rouge">comments</code>, <code class="language-plaintext highlighter-rouge">commits</code>, <code class="language-plaintext highlighter-rouge">createdAt</code>, <code class="language-plaintext highlighter-rouge">deletions</code>, <code class="language-plaintext highlighter-rouge">files</code>, <code class="language-plaintext highlighter-rouge">fullDatabaseId</code>, <code class="language-plaintext highlighter-rouge">headRefName</code>, <code class="language-plaintext highlighter-rouge">headRefOid</code>, <code class="language-plaintext highlighter-rouge">headRepository</code>, <code class="language-plaintext highlighter-rouge">headRepositoryOwner</code>, <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">isCrossRepository</code>, <code class="language-plaintext highlighter-rouge">isDraft</code>, <code class="language-plaintext highlighter-rouge">labels</code>, <code class="language-plaintext highlighter-rouge">latestReviews</code>, <code class="language-plaintext highlighter-rouge">maintainerCanModify</code>, <code class="language-plaintext highlighter-rouge">mergeCommit</code>, <code class="language-plaintext highlighter-rouge">mergeStateStatus</code>, <code class="language-plaintext highlighter-rouge">mergeable</code>, <code class="language-plaintext highlighter-rouge">mergedAt</code>, <code class="language-plaintext highlighter-rouge">mergedBy</code>, <code class="language-plaintext highlighter-rouge">milestone</code>, <code class="language-plaintext highlighter-rouge">number</code>, <code class="language-plaintext highlighter-rouge">potentialMergeCommit</code>, <code class="language-plaintext highlighter-rouge">projectCards</code>, <code class="language-plaintext highlighter-rouge">projectItems</code>, <code class="language-plaintext highlighter-rouge">reactionGroups</code>, <code class="language-plaintext highlighter-rouge">reviewDecision</code>, <code class="language-plaintext highlighter-rouge">reviewRequests</code>, <code class="language-plaintext highlighter-rouge">reviews</code>, <code class="language-plaintext highlighter-rouge">state</code>, <code class="language-plaintext highlighter-rouge">statusCheckRollup</code>, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">updatedAt</code>, <code class="language-plaintext highlighter-rouge">url</code></p>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_pr.html">gh pr</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <h3>In use</h3>
+  
+  
+
+  <h4>In terminal</h4>
+
+  <p>By default, we will display items in the terminal.</p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a pull request in terminal</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr view 21
+<b>Pull request title</b>
+<span class="gray">opened by user. 0 comments. (label)</span>
+
+  Pull request body
+
+<span class="gray">View this pull request on GitHub: https://github.com/owner/repo/pull/21</span>
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+
+  
+
+  <h4>In the browser</h4>
+
+  <p>Quickly open an item in the browser using <code>--web</code> or <code>-w</code></p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a pull request in the browser</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr view 21 --web
+Opening https://github.com/owner/repo/pull/21 in your browser.
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+
+  
+
+  
+    <h4>With no arguments</h4>
+  
+
+  
+    <p>We will display the pull request of the branch you're currently on.</p>
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing the pull request of the branch you're on</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr view
+<b>Pull request title</b>
+<span class="gray">opened by user. 0 comments. (label)</span>
+
+  Pull request body
+
+<span class="gray">View this pull request on GitHub: https://github.com/owner/repo/pull/21</span>
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+
+
+
+        </div>
+      </main></body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_issue_edit"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-issue-edit" data-element-type="Command">gh issue edit</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh issue edit {&lt;numbers&gt; | &lt;urls&gt;} [flags]
+</code></pre></div></div>
+
+<p>Edit one or more issues within the same repository.</p>
+
+<p>Editing issues' projects requires authorization with the <code class="language-plaintext highlighter-rouge">project</code> scope.
+To authorize, run <code class="language-plaintext highlighter-rouge">gh auth refresh -s project</code>.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">--attach</code> to upload an image or video to a single issue. Without a body
+flag the issue keeps the body it already has and the attachment is appended to it.
+If the body references an attached file, such as <code class="language-plaintext highlighter-rouge">![alt](./login.png)</code>, that
+reference is rewritten to point at the uploaded asset instead.
+You can attach up to 50 files per command.</p>
+
+<p>Alt text for an image follows the path after <code class="language-plaintext highlighter-rouge">#</code>, as in
+<code class="language-plaintext highlighter-rouge">--attach './login.png#The login error state'</code>. Without it the filename is used.
+A reference already in the body keeps the alt text written there. Video renders
+as a player and has no alt text, so it cannot be given any.</p>
+
+<p>If some attachments upload and others fail, the issue is still updated with the
+ones that succeeded. The command then exits with a non-zero status, but the edited
+issue URLs are still printed to stdout.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">--add-assignee</code> and <code class="language-plaintext highlighter-rouge">--remove-assignee</code> flags both support
+the following special values:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">@me</code>: assign or unassign yourself</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">@copilot</code>: assign or unassign Copilot (not supported on GitHub Enterprise Server)</li>
+</ul>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--add-assignee &lt;login&gt;</code>
+</dt>
+	<dd>Add assigned users by their login. Use "@me" to assign yourself, or "@copilot" to assign Copilot.</dd>
+
+	<dt>
+		<code>--add-blocked-by &lt;number&gt;</code>
+</dt>
+	<dd>Add 'blocked by' relationships by issue number or URL</dd>
+
+	<dt>
+		<code>--add-blocking &lt;number&gt;</code>
+</dt>
+	<dd>Add 'blocking' relationships by issue number or URL</dd>
+
+	<dt>
+		<code>--add-label &lt;name&gt;</code>
+</dt>
+	<dd>Add labels by name</dd>
+
+	<dt>
+		<code>--add-project &lt;title&gt;</code>
+</dt>
+	<dd>Add the issue to projects by title</dd>
+
+	<dt>
+		<code>--add-sub-issue &lt;number&gt;</code>
+</dt>
+	<dd>Add sub-issues by number or URL</dd>
+
+	<dt>
+		<code>--attach &lt;file&gt;</code>
+</dt>
+	<dd>Attach an image or video file, in '&lt;file&gt;#&lt;image alt text&gt;' format</dd>
+
+	<dt>
+<code>-b</code>, 
+		<code>--body &lt;string&gt;</code>
+</dt>
+	<dd>Set the new body.</dd>
+
+	<dt>
+<code>-F</code>, 
+		<code>--body-file &lt;file&gt;</code>
+</dt>
+	<dd>Read body text from file (use "-" to read from standard input)</dd>
+
+	<dt>
+<code>-m</code>, 
+		<code>--milestone &lt;name&gt;</code>
+</dt>
+	<dd>Edit the milestone the issue belongs to by name</dd>
+
+	<dt>
+		<code>--parent &lt;number&gt;</code>
+</dt>
+	<dd>Set the parent issue by number or URL</dd>
+
+	<dt>
+		<code>--remove-assignee &lt;login&gt;</code>
+</dt>
+	<dd>Remove assigned users by their login. Use "@me" to unassign yourself, or "@copilot" to unassign Copilot.</dd>
+
+	<dt>
+		<code>--remove-blocked-by &lt;number&gt;</code>
+</dt>
+	<dd>Remove 'blocked by' relationships by issue number or URL</dd>
+
+	<dt>
+		<code>--remove-blocking &lt;number&gt;</code>
+</dt>
+	<dd>Remove 'blocking' relationships by issue number or URL</dd>
+
+	<dt>
+		<code>--remove-label &lt;name&gt;</code>
+</dt>
+	<dd>Remove labels by name</dd>
+
+	<dt>
+		<code>--remove-milestone</code>
+</dt>
+	<dd>Remove the milestone association from the issue</dd>
+
+	<dt>
+		<code>--remove-parent</code>
+</dt>
+	<dd>Remove the parent issue</dd>
+
+	<dt>
+		<code>--remove-project &lt;title&gt;</code>
+</dt>
+	<dd>Remove the issue from projects by title</dd>
+
+	<dt>
+		<code>--remove-sub-issue &lt;number&gt;</code>
+</dt>
+	<dd>Remove sub-issues by number or URL</dd>
+
+	<dt>
+		<code>--remove-type</code>
+</dt>
+	<dd>Remove the issue type from the issue</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--title &lt;string&gt;</code>
+</dt>
+	<dd>Set the new title.</dd>
+
+	<dt>
+		<code>--type &lt;name&gt;</code>
+</dt>
+	<dd>Set the issue type by name</dd>
+</dl>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<dl class="flags">
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+</dl>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gh issue edit 23 <span class="nt">--title</span> <span class="s2">"I found a bug"</span> <span class="nt">--body</span> <span class="s2">"Nothing works"</span>
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--add-label</span> <span class="s2">"bug,help wanted"</span> <span class="nt">--remove-label</span> <span class="s2">"core"</span>
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--add-assignee</span> <span class="s2">"@me"</span> <span class="nt">--remove-assignee</span> monalisa,hubot
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--add-assignee</span> <span class="s2">"@copilot"</span>
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--add-project</span> <span class="s2">"Roadmap"</span> <span class="nt">--remove-project</span> v1,v2
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--milestone</span> <span class="s2">"Version 1"</span>
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--remove-milestone</span>
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--body-file</span> body.txt
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--attach</span> <span class="s1">'./login.png#The login error state'</span>
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--attach</span> ./before.png <span class="nt">--attach</span> ./after.png
+<span class="nv">$ </span>gh issue edit 23 34 <span class="nt">--add-label</span> <span class="s2">"help wanted"</span>
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--type</span> Bug
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--remove-type</span>
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--parent</span> 100
+<span class="nv">$ </span>gh issue edit 23 <span class="nt">--remove-parent</span>
+<span class="nv">$ </span>gh issue edit 100 <span class="nt">--add-sub-issue</span> 123,124
+<span class="nv">$ </span>gh issue edit 123 <span class="nt">--add-blocked-by</span> 200 <span class="nt">--add-blocking</span> 300,301</code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_issue.html">gh issue</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

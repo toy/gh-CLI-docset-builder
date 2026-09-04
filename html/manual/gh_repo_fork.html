@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_repo_fork"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-repo-fork" data-element-type="Command">gh repo fork</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh repo fork [&lt;repository&gt;] [-- &lt;gitflags&gt;...] [flags]
+</code></pre></div></div>
+
+<p>Create a fork of a repository.</p>
+
+<p>With no argument, creates a fork of the current repository. Otherwise, forks
+the specified repository.</p>
+
+<p>By default, the new fork is set to be your <code class="language-plaintext highlighter-rouge">origin</code> remote and any existing
+origin remote is renamed to <code class="language-plaintext highlighter-rouge">upstream</code>. To alter this behavior, you can set
+a name for the new fork's remote with <code class="language-plaintext highlighter-rouge">--remote-name</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">upstream</code> remote will be set as the default remote repository.</p>
+
+<p>Additional <code class="language-plaintext highlighter-rouge">git clone</code> flags can be passed after <code class="language-plaintext highlighter-rouge">--</code>.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--clone</code>
+</dt>
+	<dd>Clone the fork</dd>
+
+	<dt>
+		<code>--default-branch-only</code>
+</dt>
+	<dd>Only include the default branch in the fork</dd>
+
+	<dt>
+		<code>--fork-name &lt;string&gt;</code>
+</dt>
+	<dd>Rename the forked repository</dd>
+
+	<dt>
+		<code>--org &lt;string&gt;</code>
+</dt>
+	<dd>Create the fork in an organization</dd>
+
+	<dt>
+		<code>--remote</code>
+</dt>
+	<dd>Add a git remote for the fork</dd>
+
+	<dt>
+		<code>--remote-name &lt;string&gt; (default "origin")</code>
+</dt>
+	<dd>Specify the name for the new remote</dd>
+</dl>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Fork a repository</span>
+<span class="nv">$ </span>gh repo fork owner/repo
+
+<span class="c"># Fork a repository and clone it locally</span>
+<span class="nv">$ </span>gh repo fork owner/repo <span class="nt">--clone</span>
+
+<span class="c"># Fork a repository without cloning it, skip the prompt</span>
+<span class="nv">$ </span>gh repo fork owner/repo <span class="nt">--clone</span><span class="o">=</span><span class="nb">false</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_repo.html">gh repo</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+  
+    <h3>In use</h3>
+  
+  
+
+  <h4>With no arguments</h4>
+
+  
+    <p>
+      Inside a git repository, and without any arguments, we will automatically create a fork on GitHub on your account
+      for your current directory. It will then prompt if you want to set an upstream remote.
+    </p>
+
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create a fork for the current repository.</span>
+<span class="magenta">~/Projects/cli</span>$ gh repo fork
+<span class="gray">- Forking cli/cli...</span>
+<span class="green">✓</span> Created fork user/cli
+<span class="green">?</span> Would you like to add a remote for the fork? Yes
+<span class="green">✓</span> Renamed origin remote to upstream
+<span class="green">✓</span> Added remote origin
+<span class="magenta">~/Projects/cli</span>$</code></pre>
+    </div>
+  
+
+  <h4>With arguments</h4>
+
+  
+    <p>
+      If you pass a repository in OWNER/REPO format, `gh` will automatically create a fork on GitHub on your account and
+      ask if you want to clone it. This works inside or outside of a git repository.
+    </p>
+
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create a fork for another repository.</span>
+<span class="magenta">~/Projects</span>$ gh repo fork cli/cli
+<span class="gray">- Forking cli/cli...</span>
+<span class="green">✓</span> Created fork cli/cli
+<span class="green">?</span> Would you like to clone the fork? Yes
+Cloning into 'cli'...
+<span class="green">✓</span> Cloned fork
+<span class="magenta">~/Projects</span>$ cd cli
+<span class="magenta">~/Projects/cli</span>$</code></pre>
+    </div>
+  
+
+  <h4>Using flags</h4>
+
+  <p>
+    Use flags to skip prompts about adding a git remote for the fork, or about cloning the forked repository locally.
+  </p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Skipping remote prompts using flags</span>
+<span class="magenta">~/Projects/cli</span>$ gh repo fork --remote=false
+<span class="gray">- Forking cli/cli...</span>
+<span class="green">✓</span> Created fork user/cli
+<span class="magenta">~/Projects/cli</span>$</code></pre>
+    </div>
+
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Skipping clone prompts using flags</span>
+<span class="magenta">~/Projects</span>$ gh repo fork cli/cli --clone=false
+<span class="gray">- Forking cli/cli...</span>
+<span class="green">✓</span> Created fork user/cli
+<span class="magenta">~/Projects</span>$</code></pre>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_repo_edit"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-repo-edit" data-element-type="Command">gh repo edit</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh repo edit [&lt;repository&gt;] [flags]
+</code></pre></div></div>
+
+<p>Edit repository settings.</p>
+
+<p>To toggle a setting off, use the <code class="language-plaintext highlighter-rouge">--&lt;flag&gt;=false</code> syntax.</p>
+
+<p>Changing repository visibility can have unexpected consequences including but not limited to:</p>
+
+<ul>
+  <li>Losing stars and watchers, affecting repository ranking</li>
+  <li>Detaching public forks from the network</li>
+  <li>Disabling push rulesets</li>
+  <li>Allowing access to GitHub Actions history and logs</li>
+</ul>
+
+<p>When the <code class="language-plaintext highlighter-rouge">--visibility</code> flag is used, <code class="language-plaintext highlighter-rouge">--accept-visibility-change-consequences</code> flag is required.</p>
+
+<p>For information on all the potential consequences, see <a href="https://gh.io/setting-repository-visibility" class="external">https://gh.io/setting-repository-visibility</a>.</p>
+
+<p>When the <code class="language-plaintext highlighter-rouge">--enable-squash-merge</code> flag is used, <code class="language-plaintext highlighter-rouge">--squash-merge-commit-message</code>
+can be used to change the default squash merge commit message behavior:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">default</code>: uses commit title and message for 1 commit, or pull request title and list of commits for 2 or more</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">pr-title</code>: uses pull request title</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">pr-title-commits</code>: uses pull request title and list of commits</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">pr-title-description</code>: uses pull request title and description</li>
+</ul>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--accept-visibility-change-consequences</code>
+</dt>
+	<dd>Accept the consequences of changing the repository visibility</dd>
+
+	<dt>
+		<code>--add-topic &lt;strings&gt;</code>
+</dt>
+	<dd>Add repository topic</dd>
+
+	<dt>
+		<code>--allow-forking</code>
+</dt>
+	<dd>Allow forking of an organization repository</dd>
+
+	<dt>
+		<code>--allow-update-branch</code>
+</dt>
+	<dd>Allow a pull request head branch that is behind its base branch to be updated</dd>
+
+	<dt>
+		<code>--default-branch &lt;name&gt;</code>
+</dt>
+	<dd>Set the default branch name for the repository</dd>
+
+	<dt>
+		<code>--delete-branch-on-merge</code>
+</dt>
+	<dd>Delete head branch when pull requests are merged</dd>
+
+	<dt>
+<code>-d</code>, 
+		<code>--description &lt;string&gt;</code>
+</dt>
+	<dd>Description of the repository</dd>
+
+	<dt>
+		<code>--enable-advanced-security</code>
+</dt>
+	<dd>Enable advanced security in the repository</dd>
+
+	<dt>
+		<code>--enable-auto-merge</code>
+</dt>
+	<dd>Enable auto-merge functionality</dd>
+
+	<dt>
+		<code>--enable-discussions</code>
+</dt>
+	<dd>Enable discussions in the repository</dd>
+
+	<dt>
+		<code>--enable-issues</code>
+</dt>
+	<dd>Enable issues in the repository</dd>
+
+	<dt>
+		<code>--enable-merge-commit</code>
+</dt>
+	<dd>Enable merging pull requests via merge commit</dd>
+
+	<dt>
+		<code>--enable-projects</code>
+</dt>
+	<dd>Enable projects in the repository</dd>
+
+	<dt>
+		<code>--enable-rebase-merge</code>
+</dt>
+	<dd>Enable merging pull requests via rebase</dd>
+
+	<dt>
+		<code>--enable-secret-scanning</code>
+</dt>
+	<dd>Enable secret scanning in the repository</dd>
+
+	<dt>
+		<code>--enable-secret-scanning-push-protection</code>
+</dt>
+	<dd>Enable secret scanning push protection in the repository. Secret scanning must be enabled first</dd>
+
+	<dt>
+		<code>--enable-squash-merge</code>
+</dt>
+	<dd>Enable merging pull requests via squashed commit</dd>
+
+	<dt>
+		<code>--enable-wiki</code>
+</dt>
+	<dd>Enable wiki in the repository</dd>
+
+	<dt>
+<code>-h</code>, 
+		<code>--homepage &lt;URL&gt;</code>
+</dt>
+	<dd>Repository home page URL</dd>
+
+	<dt>
+		<code>--remove-topic &lt;strings&gt;</code>
+</dt>
+	<dd>Remove repository topic</dd>
+
+	<dt>
+		<code>--squash-merge-commit-message &lt;string&gt;</code>
+</dt>
+	<dd>The default value for a squash merge commit message: {default|pr-title|pr-title-commits|pr-title-description}</dd>
+
+	<dt>
+		<code>--template</code>
+</dt>
+	<dd>Make the repository available as a template repository</dd>
+
+	<dt>
+		<code>--visibility &lt;string&gt;</code>
+</dt>
+	<dd>Change the visibility of the repository to {public,private,internal}</dd>
+</dl>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Enable issues and wiki</span>
+<span class="nv">$ </span>gh repo edit <span class="nt">--enable-issues</span> <span class="nt">--enable-wiki</span>
+
+<span class="c"># Disable projects</span>
+<span class="nv">$ </span>gh repo edit <span class="nt">--enable-projects</span><span class="o">=</span><span class="nb">false</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_repo.html">gh repo</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

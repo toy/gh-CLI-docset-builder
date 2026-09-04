@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_run_view"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-run-view" data-element-type="Command">gh run view</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh run view [&lt;run-id&gt;] [flags]
+</code></pre></div></div>
+
+<p>View a summary of a workflow run.</p>
+
+<p>Due to platform limitations, <code class="language-plaintext highlighter-rouge">gh</code> may not always be able to associate jobs with their
+corresponding logs when using the primary method of fetching logs in zip format.</p>
+
+<p>In such cases, <code class="language-plaintext highlighter-rouge">gh</code> will attempt to fetch logs for each job individually via the API.
+This fallback is slower and more resource-intensive. If more than 25 job logs are missing,
+the operation will fail with an error.</p>
+
+<p>Additionally, due to similar platform constraints, some log lines may not be
+associated with a specific step within a job. In these cases, the step name will
+appear as <code class="language-plaintext highlighter-rouge">UNKNOWN STEP</code> in the log output.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+<code>-a</code>, 
+		<code>--attempt &lt;uint&gt; (default 0)</code>
+</dt>
+	<dd>The attempt number of the workflow run</dd>
+
+	<dt>
+		<code>--exit-status</code>
+</dt>
+	<dd>Exit with non-zero status if run failed</dd>
+
+	<dt>
+<code>-j</code>, 
+		<code>--job &lt;string&gt;</code>
+</dt>
+	<dd>View a specific job ID from a run</dd>
+
+	<dt>
+<code>-q</code>, 
+		<code>--jq &lt;expression&gt;</code>
+</dt>
+	<dd>Filter JSON output using a jq expression</dd>
+
+	<dt>
+		<code>--json &lt;fields&gt;</code>
+</dt>
+	<dd>Output JSON with the specified fields</dd>
+
+	<dt>
+		<code>--log</code>
+</dt>
+	<dd>View full log for either a run or specific job</dd>
+
+	<dt>
+		<code>--log-failed</code>
+</dt>
+	<dd>View the log for any failed steps in a run or specific job</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--template &lt;string&gt;</code>
+</dt>
+	<dd>Format JSON output using a Go template; see "gh help formatting"</dd>
+
+	<dt>
+<code>-v</code>, 
+		<code>--verbose</code>
+</dt>
+	<dd>Show job steps</dd>
+
+	<dt>
+<code>-w</code>, 
+		<code>--web</code>
+</dt>
+	<dd>Open run in the browser</dd>
+</dl>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<dl class="flags">
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+</dl>
+
+<h3 id="json-fields">JSON Fields</h3>
+
+<p><code class="language-plaintext highlighter-rouge">attempt</code>, <code class="language-plaintext highlighter-rouge">conclusion</code>, <code class="language-plaintext highlighter-rouge">createdAt</code>, <code class="language-plaintext highlighter-rouge">databaseId</code>, <code class="language-plaintext highlighter-rouge">displayTitle</code>, <code class="language-plaintext highlighter-rouge">event</code>, <code class="language-plaintext highlighter-rouge">headBranch</code>, <code class="language-plaintext highlighter-rouge">headSha</code>, <code class="language-plaintext highlighter-rouge">jobs</code>, <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">number</code>, <code class="language-plaintext highlighter-rouge">startedAt</code>, <code class="language-plaintext highlighter-rouge">status</code>, <code class="language-plaintext highlighter-rouge">updatedAt</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">workflowDatabaseId</code>, <code class="language-plaintext highlighter-rouge">workflowName</code></p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Interactively select a run to view, optionally selecting a single job</span>
+<span class="nv">$ </span>gh run view
+
+<span class="c"># View a specific run</span>
+<span class="nv">$ </span>gh run view 12345
+
+<span class="c"># View a specific run with specific attempt number</span>
+<span class="nv">$ </span>gh run view 12345 <span class="nt">--attempt</span> 3
+
+<span class="c"># View a specific job within a run</span>
+<span class="nv">$ </span>gh run view <span class="nt">--job</span> 456789
+
+<span class="c"># View the full log for a specific job</span>
+<span class="nv">$ </span>gh run view <span class="nt">--log</span> <span class="nt">--job</span> 456789
+
+<span class="c"># Exit non-zero if a run failed</span>
+<span class="nv">$ </span>gh run view 0451 <span class="nt">--exit-status</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"run pending or passed"</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_run.html">gh run</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

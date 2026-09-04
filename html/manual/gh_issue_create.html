@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_issue_create"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-issue-create" data-element-type="Command">gh issue create</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh issue create [flags]
+</code></pre></div></div>
+
+<p>Create an issue on GitHub.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">--attach</code> to upload an image or video. The attachment is appended to the
+body. If the body references an attached file, such as <code class="language-plaintext highlighter-rouge">![alt](./login.png)</code>, that
+reference is rewritten to point at the uploaded asset instead.
+You can attach up to 50 files per command.</p>
+
+<p>Alt text for an image follows the path after <code class="language-plaintext highlighter-rouge">#</code>, as in
+<code class="language-plaintext highlighter-rouge">--attach './login.png#The login error state'</code>. Without it the filename is used.
+A reference already in the body keeps the alt text written there. Video renders
+as a player and has no alt text, so it cannot be given any.</p>
+
+<p>If some attachments upload and others fail, the issue is still created with the
+ones that succeeded. The command then exits with a non-zero status, but the new
+issue's URL is still printed to stdout.</p>
+
+<p>Adding an issue to projects requires authorization with the <code class="language-plaintext highlighter-rouge">project</code> scope.
+To authorize, run <code class="language-plaintext highlighter-rouge">gh auth refresh -s project</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">--assignee</code> flag supports the following special values:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">@me</code>: assign yourself</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">@copilot</code>: assign Copilot (not supported on GitHub Enterprise Server)</li>
+</ul>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+<code>-a</code>, 
+		<code>--assignee &lt;login&gt;</code>
+</dt>
+	<dd>Assign people by their login. Use "@me" to self-assign.</dd>
+
+	<dt>
+		<code>--attach &lt;file&gt;</code>
+</dt>
+	<dd>Attach an image or video file, in '&lt;file&gt;#&lt;image alt text&gt;' format</dd>
+
+	<dt>
+		<code>--blocked-by &lt;numbers&gt;</code>
+</dt>
+	<dd>Mark the new issue as blocked by these issue numbers or URLs</dd>
+
+	<dt>
+		<code>--blocking &lt;numbers&gt;</code>
+</dt>
+	<dd>Mark the new issue as blocking these issue numbers or URLs</dd>
+
+	<dt>
+<code>-b</code>, 
+		<code>--body &lt;string&gt;</code>
+</dt>
+	<dd>Supply a body. Will prompt for one otherwise.</dd>
+
+	<dt>
+<code>-F</code>, 
+		<code>--body-file &lt;file&gt;</code>
+</dt>
+	<dd>Read body text from file (use "-" to read from standard input)</dd>
+
+	<dt>
+<code>-e</code>, 
+		<code>--editor</code>
+</dt>
+	<dd>Skip prompts and open the text editor to write the title and body in. The first line is the title and the remaining text is the body.</dd>
+
+	<dt>
+<code>-l</code>, 
+		<code>--label &lt;name&gt;</code>
+</dt>
+	<dd>Add labels by name</dd>
+
+	<dt>
+<code>-m</code>, 
+		<code>--milestone &lt;name&gt;</code>
+</dt>
+	<dd>Add the issue to a milestone by name</dd>
+
+	<dt>
+		<code>--parent &lt;number&gt;</code>
+</dt>
+	<dd>Add the new issue as a sub-issue of the specified parent number or URL</dd>
+
+	<dt>
+<code>-p</code>, 
+		<code>--project &lt;title&gt;</code>
+</dt>
+	<dd>Add the issue to projects by title</dd>
+
+	<dt>
+		<code>--recover &lt;string&gt;</code>
+</dt>
+	<dd>Recover input from a failed run of create</dd>
+
+	<dt>
+<code>-T</code>, 
+		<code>--template &lt;name&gt;</code>
+</dt>
+	<dd>Template name to use as starting body text</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--title &lt;string&gt;</code>
+</dt>
+	<dd>Supply a title. Will prompt for one otherwise.</dd>
+
+	<dt>
+		<code>--type &lt;name&gt;</code>
+</dt>
+	<dd>Set the issue type by name</dd>
+
+	<dt>
+<code>-w</code>, 
+		<code>--web</code>
+</dt>
+	<dd>Open the browser to create an issue</dd>
+</dl>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<dl class="flags">
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+</dl>
+
+<h3 id="aliases">ALIASES</h3>
+
+<p>gh issue new</p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gh issue create <span class="nt">--title</span> <span class="s2">"I found a bug"</span> <span class="nt">--body</span> <span class="s2">"Nothing works"</span>
+<span class="nv">$ </span>gh issue create <span class="nt">--attach</span> <span class="s1">'./login.png#The login error state'</span>
+<span class="nv">$ </span>gh issue create <span class="nt">--attach</span> ./before.png <span class="nt">--attach</span> ./after.png
+<span class="nv">$ </span>gh issue create <span class="nt">--label</span> <span class="s2">"bug,help wanted"</span>
+<span class="nv">$ </span>gh issue create <span class="nt">--label</span> bug <span class="nt">--label</span> <span class="s2">"help wanted"</span>
+<span class="nv">$ </span>gh issue create <span class="nt">--assignee</span> monalisa,hubot
+<span class="nv">$ </span>gh issue create <span class="nt">--assignee</span> <span class="s2">"@me"</span>
+<span class="nv">$ </span>gh issue create <span class="nt">--assignee</span> <span class="s2">"@copilot"</span>
+<span class="nv">$ </span>gh issue create <span class="nt">--project</span> <span class="s2">"Roadmap"</span>
+<span class="nv">$ </span>gh issue create <span class="nt">--template</span> <span class="s2">"Bug Report"</span>
+<span class="nv">$ </span>gh issue create <span class="nt">--type</span> Bug
+<span class="nv">$ </span>gh issue create <span class="nt">--parent</span> 100
+<span class="nv">$ </span>gh issue create <span class="nt">--parent</span> https://github.com/cli/go-gh/issues/42
+<span class="nv">$ </span>gh issue create <span class="nt">--blocked-by</span> 200,201 <span class="nt">--blocking</span> 300</code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_issue.html">gh issue</a></li>
+</ul>
+
+          
+
+
+
+
+  
+    <h3>In use</h3>
+  
+  
+
+  <h4>Interactively</h4>
+
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create an issue interactively</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue create
+Creating issue in owner/repo
+<b>? Title</b> My new issue
+<b>? Body</b> <span class="gray">[(e) to launch nano, enter to skip]</span>
+http://github.com/owner/repo/issues/1
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  <h4>With flags</h4>
+
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create an issue using flags</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue create --title "Issue title" --body "Issue body"
+http://github.com/owner/repo/issues/1
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  <h4>In the browser</h4>
+
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray">// Quickly navigate to the issue creation page</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue create --web
+Opening https://github.com/owner/repo/issues/new in your browser.
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

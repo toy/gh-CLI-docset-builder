@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_project_item-edit"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-project-item-edit" data-element-type="Command">gh project item-edit</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh project item-edit [&lt;number&gt;] [flags]
+</code></pre></div></div>
+
+<p>Edit a draft issue or a project item.</p>
+
+<p>The usual way to select the item and field is by name: pass the project
+<code class="language-plaintext highlighter-rouge">number</code> plus <code class="language-plaintext highlighter-rouge">--owner</code>, point at the item with its issue or pull
+request <code class="language-plaintext highlighter-rouge">--url</code>, and name the field with <code class="language-plaintext highlighter-rouge">--field</code>. For single-select
+fields, <code class="language-plaintext highlighter-rouge">--value</code> is the option name.</p>
+
+<p>For scripts and machine use, you can also pass GraphQL node IDs directly with
+<code class="language-plaintext highlighter-rouge">--id</code>, <code class="language-plaintext highlighter-rouge">--field-id</code> and <code class="language-plaintext highlighter-rouge">--project-id</code> (and, for single-select
+fields, <code class="language-plaintext highlighter-rouge">--single-select-option-id</code>).</p>
+
+<p>Note that <code class="language-plaintext highlighter-rouge">--url</code> is the issue or pull request URL, not a project URL, so its
+owner may differ from the project's; <code class="language-plaintext highlighter-rouge">--owner</code> selects the project.</p>
+
+<p>For non-draft issues, only a single field value can be updated per invocation.</p>
+
+<p>Remove a project item field value with <code class="language-plaintext highlighter-rouge">--clear</code>.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--body &lt;string&gt;</code>
+</dt>
+	<dd>Body of the draft issue item</dd>
+
+	<dt>
+		<code>--clear</code>
+</dt>
+	<dd>Remove field value</dd>
+
+	<dt>
+		<code>--date &lt;string&gt;</code>
+</dt>
+	<dd>Date value for the field (YYYY-MM-DD)</dd>
+
+	<dt>
+		<code>--field &lt;string&gt;</code>
+</dt>
+	<dd>Name of the field to update</dd>
+
+	<dt>
+		<code>--field-id &lt;string&gt;</code>
+</dt>
+	<dd>ID of the field to update</dd>
+
+	<dt>
+		<code>--format &lt;string&gt;</code>
+</dt>
+	<dd>Output format: {json}</dd>
+
+	<dt>
+		<code>--id &lt;string&gt;</code>
+</dt>
+	<dd>ID of the item to edit</dd>
+
+	<dt>
+		<code>--iteration-id &lt;string&gt;</code>
+</dt>
+	<dd>ID of the iteration value to set on the field</dd>
+
+	<dt>
+<code>-q</code>, 
+		<code>--jq &lt;expression&gt;</code>
+</dt>
+	<dd>Filter JSON output using a jq expression</dd>
+
+	<dt>
+		<code>--number &lt;float&gt; (default 0)</code>
+</dt>
+	<dd>Number value for the field</dd>
+
+	<dt>
+		<code>--owner &lt;string&gt;</code>
+</dt>
+	<dd>Login of the owner. Use "@me" for the current user.</dd>
+
+	<dt>
+		<code>--project-id &lt;string&gt;</code>
+</dt>
+	<dd>ID of the project to which the field belongs to</dd>
+
+	<dt>
+		<code>--single-select-option-id &lt;string&gt;</code>
+</dt>
+	<dd>ID of the single select option value to set on the field</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--template &lt;string&gt;</code>
+</dt>
+	<dd>Format JSON output using a Go template; see "gh help formatting"</dd>
+
+	<dt>
+		<code>--text &lt;string&gt;</code>
+</dt>
+	<dd>Text value for the field</dd>
+
+	<dt>
+		<code>--title &lt;string&gt;</code>
+</dt>
+	<dd>Title of the draft issue item</dd>
+
+	<dt>
+		<code>--url &lt;string&gt;</code>
+</dt>
+	<dd>URL of the issue or pull request whose project item to edit</dd>
+
+	<dt>
+		<code>--value &lt;--field&gt;</code>
+</dt>
+	<dd>Value to set on the field named by --field</dd>
+</dl>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Set the "Status" field to "In Progress" for an issue on monalisa's project 1</span>
+<span class="nv">$ </span>gh project item-edit 1 <span class="nt">--owner</span> monalisa <span class="nt">--url</span> https://github.com/monalisa/myproject/issues/23 <span class="nt">--field</span> <span class="s2">"Status"</span> <span class="nt">--value</span> <span class="s2">"In Progress"</span>
+
+<span class="c"># Edit an item's text field value by node ID (machine / scripted use)</span>
+<span class="nv">$ </span>gh project item-edit <span class="nt">--id</span> &lt;item-id&gt; <span class="nt">--field-id</span> &lt;field-id&gt; <span class="nt">--project-id</span> &lt;project-id&gt; <span class="nt">--text</span> <span class="s2">"new text"</span>
+
+<span class="c"># Clear an item's field value by node ID</span>
+<span class="nv">$ </span>gh project item-edit <span class="nt">--id</span> &lt;item-id&gt; <span class="nt">--field-id</span> &lt;field-id&gt; <span class="nt">--project-id</span> &lt;project-id&gt; <span class="nt">--clear</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_project.html">gh project</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

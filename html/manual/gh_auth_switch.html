@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_auth_switch"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-auth-switch" data-element-type="Command">gh auth switch</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh auth switch [flags]
+</code></pre></div></div>
+
+<p>Switch the active account for a GitHub host.</p>
+
+<p>This command changes the authentication configuration that will
+be used when running commands targeting the specified GitHub host.</p>
+
+<p>If the specified host has two accounts, the active account will be switched
+automatically. If there are more than two accounts, disambiguation will be
+required either through the <code class="language-plaintext highlighter-rouge">--user</code> flag or an interactive prompt.</p>
+
+<p>For a list of authenticated accounts you can run <code class="language-plaintext highlighter-rouge">gh auth status</code>.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+<code>-h</code>, 
+		<code>--hostname &lt;string&gt;</code>
+</dt>
+	<dd>The hostname of the GitHub instance to switch account for</dd>
+
+	<dt>
+<code>-u</code>, 
+		<code>--user &lt;string&gt;</code>
+</dt>
+	<dd>The account to switch to</dd>
+</dl>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Select what host and account to switch to via a prompt</span>
+<span class="nv">$ </span>gh auth switch
+
+<span class="c"># Switch the active account on a specific host to a specific user</span>
+<span class="nv">$ </span>gh auth switch <span class="nt">--hostname</span> enterprise.internal <span class="nt">--user</span> monalisa</code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_auth.html">gh auth</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

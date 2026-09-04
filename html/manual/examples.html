@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Examples | GitHub CLI</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="Examples">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="Examples">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"Examples","image":"/assets/images/social-card.png","url":"/manual/examples"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="github-cli-usage-examples" data-element-type="Section">GitHub CLI usage examples</h2>
+
+          
+  
+  
+    <h3 id="checking-out">Checking out a pull request locally</h3>
+  
+
+  <h4>Using pull request number</h4>
+
+  <p>You can check out any pull request, including from forks, in a repository using its pull request number</p>
+
+  <div class="width-full">
+    <pre class="terminal"><code><span class="gray">// Checking out a pull request locally</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr checkout 12
+remote: Enumerating objects: 66, done.
+remote: Counting objects: 100% (66/66), done.
+remote: Total 83 (delta 66), reused 66 (delta 66), pack-reused 17
+Unpacking objects: 100% (83/83), done.
+From https://github.com/owner/repo
+ * [new ref]             refs/pull/8896/head -&gt; patch-2
+M       README.md
+Switched to branch 'patch-2'
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+  </div>
+
+  <h4>Using other selectors</h4>
+
+  <p>You can also use URLs and branch names to checkout pull requests.</p>
+
+  <div class="width-full">
+    <pre class="terminal"><code><span class="gray">// Checking out a pull request locally</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr checkout branch-name
+Switched to branch 'branch-name'
+Your branch is up to date with 'origin/branch-name'.
+Already up to date.
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+  </div>
+
+
+
+  
+  
+    <h3 id="cloning">Cloning a repository</h3>
+  
+
+  <h4>Using OWNER/REPO syntax</h4>
+
+  <p>You can clone any repository using OWNER/REPO syntax.</p>
+
+  <div class="width-full">
+    <pre class="terminal"><code><span class="gray"># Cloning a repository</span>
+<span class="magenta">~/Projects</span>$ gh repo clone cli/cli
+Cloning into 'cli'...
+<span class="magenta">~/Projects</span>$ cd cli
+<span class="magenta">~/Projects/cli</span>$</code></pre>
+  </div>
+
+  <h4>Using other selectors</h4>
+
+  <p>You can also use GitHub URLs to clone repositories.</p>
+
+  <div class="width-full">
+    <pre class="terminal"><code><span class="gray"># Cloning a repository</span>
+<span class="magenta">~/Projects/my-project</span>$ gh repo clone https://github.com/cli/cli
+Cloning into 'cli'...
+remote: Enumerating objects: 99, done.
+remote: Counting objects: 100% (99/99), done.
+remote: Compressing objects: 100% (76/76), done.
+remote: Total 21160 (delta 49), reused 35 (delta 18), pack-reused 21061
+Receiving objects: 100% (21160/21160), 57.93 MiB | 10.82 MiB/s, done.
+Resolving deltas: 100% (16051/16051), done.
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+  </div>
+
+
+
+  
+  
+    <h3 id="creating">Creating issues and pull requests</h3>
+  
+
+  <h4>Interactively</h4>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create a pull request interactively</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr create
+Creating pull request for <span class="cyan">feature-branch</span> into <span class="cyan">main</span> in owner/repo
+<b>? Title</b> My new pull request
+<b>? Body</b> <span class="gray">[(e) to launch nano, enter to skip]</span>
+http://github.com/owner/repo/pull/1
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create an issue interactively</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue create
+Creating issue in owner/repo
+<b>? Title</b> My new issue
+<b>? Body</b> <span class="gray">[(e) to launch nano, enter to skip]</span>
+http://github.com/owner/repo/issues/1
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  <h4>With flags</h4>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create a pull request using flags</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr create --title "Pull request title" --body "Pull request body"
+http://github.com/owner/repo/pull/1
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create an issue using flags</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue create --title "Issue title" --body "Issue body"
+http://github.com/owner/repo/issues/1
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  <h4>In the browser</h4>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray">// Quickly navigate to the pull request creation page</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr create --web
+Opening https://github.com/owner/repo/pull/branch in your browser.
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray">// Quickly navigate to the issue creation page</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue create --web
+Opening https://github.com/owner/repo/issues/new in your browser.
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <h4>Working with forks</h4>
+    <p>
+      This command will automatically create a fork for you if you're in a repository that you don't have permission to
+      push to.
+    </p>
+  
+
+
+
+  
+  
+    <h3 id="forking">Forking repositories</h3>
+  
+
+  <h4>With no arguments</h4>
+
+  
+    <p>
+      Inside a git repository, and without any arguments, we will automatically create a fork on GitHub on your account
+      for your current directory. It will then prompt if you want to set an upstream remote.
+    </p>
+
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create a fork for the current repository.</span>
+<span class="magenta">~/Projects/cli</span>$ gh repo fork
+<span class="gray">- Forking cli/cli...</span>
+<span class="green">✓</span> Created fork user/cli
+<span class="green">?</span> Would you like to add a remote for the fork? Yes
+<span class="green">✓</span> Renamed origin remote to upstream
+<span class="green">✓</span> Added remote origin
+<span class="magenta">~/Projects/cli</span>$</code></pre>
+    </div>
+  
+
+  <h4>With arguments</h4>
+
+  
+    <p>
+      If you pass a repository in OWNER/REPO format, `gh` will automatically create a fork on GitHub on your account and
+      ask if you want to clone it. This works inside or outside of a git repository.
+    </p>
+
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create a fork for another repository.</span>
+<span class="magenta">~/Projects</span>$ gh repo fork cli/cli
+<span class="gray">- Forking cli/cli...</span>
+<span class="green">✓</span> Created fork cli/cli
+<span class="green">?</span> Would you like to clone the fork? Yes
+Cloning into 'cli'...
+<span class="green">✓</span> Cloned fork
+<span class="magenta">~/Projects</span>$ cd cli
+<span class="magenta">~/Projects/cli</span>$</code></pre>
+    </div>
+  
+
+  <h4>Using flags</h4>
+
+  <p>
+    Use flags to skip prompts about adding a git remote for the fork, or about cloning the forked repository locally.
+  </p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Skipping remote prompts using flags</span>
+<span class="magenta">~/Projects/cli</span>$ gh repo fork --remote=false
+<span class="gray">- Forking cli/cli...</span>
+<span class="green">✓</span> Created fork user/cli
+<span class="magenta">~/Projects/cli</span>$</code></pre>
+    </div>
+
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Skipping clone prompts using flags</span>
+<span class="magenta">~/Projects</span>$ gh repo fork cli/cli --clone=false
+<span class="gray">- Forking cli/cli...</span>
+<span class="green">✓</span> Created fork user/cli
+<span class="magenta">~/Projects</span>$</code></pre>
+    </div>
+  
+
+
+
+  
+  
+    <h3 id="using-lists">Using lists of issues or pull requests in a repository</h3>
+  
+
+  <h4>Default behavior</h4>
+
+  <p>You will see the most recent 30 open items.</p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a list of open pull requests</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr list
+
+Pull requests for owner/repo
+
+<span class="green">#14</span>  Upgrade to Prettier 1.19                           <span class="cyan">prettier</span>
+<span class="green">#14</span>  Extend arrow navigation in lists for MacOS         <span class="cyan">arrow-nav</span>
+<span class="green">#13</span>  Add Support for Windows Automatic Dark Mode        <span class="cyan">dark-mode</span>
+<span class="green">#8</span>   Create and use keyboard shortcut react component   <span class="cyan">shortcut</span>
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a list of open issues</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue list
+
+Issues for owner/repo
+
+<span class="green">#14</span>  Update the remote url if it changed  <span class="gray">(bug)</span>
+<span class="green">#14</span>  PR commands on a detached head       <span class="gray">(enhancement)</span>
+<span class="green">#13</span>  Support for GitHub Enterprise        <span class="gray">(wontfix)</span>
+<span class="green">#8</span>   Add an easier upgrade command        <span class="gray">(bug)</span>
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  <h4>Filtering with flags</h4>
+  <p>You can use flags to filter the list for your specific use cases.</p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a list of closed pull requests assigned to a user</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr list --state closed --assignee user
+
+Pull requests for owner/repo
+
+<span class="red">#13</span>  Upgrade to Electron 7         <span class="cyan">electron-7</span>
+<span class="red">#8</span>   Release Notes Writing Guide   <span class="cyan">release-notes</span>
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a list of closed issues assigned to a user</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue list --state closed --assignee user
+
+Issues for owner/repo
+
+<span class="red">#13</span>  Enable discarding submodule changes  <span class="gray">(bug)</span>
+<span class="red">#8</span>   Upgrade to latest react              <span class="gray">(upgrade)</span>
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+
+
+  
+  
+    <h3 id="checking-status">Viewing the status of your relevant work</h3>
+
+    <h4>Pull requests</h4>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing the status of your relevant pull requests</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr status
+<b>Current branch</b>
+  <span class="green">#12</span> Remove the test feature <span class="cyan">[user:patch-2]</span>
+   - <span class="red">All checks failing</span> - <span class="yellow">Review required</span>
+
+<b>Created by you</b>
+  <span class="gray">You have no open pull requests</span>
+
+<b>Requesting a code review from you</b>
+  <span class="green">#13</span> Fix tests <span class="cyan">[branch]</span>
+  - <span class="red">3/4 checks failing</span> - <span class="yellow">Review required</span>
+  <span class="green">#15</span> New feature <span class="cyan">[branch]</span>
+   - <span class="green">Checks passing</span> - <span class="green">Approved</span>
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <h4>Issues</h4>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing issues relevant to you</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue status
+<b>Issues assigned to you</b>
+  <span class="green">#8509</span> [Fork] Improve how Desktop handles forks  <span class="gray">(epic:fork, meta)</span>
+
+<b>Issues mentioning you</b>
+  <span class="green">#8938</span> [Fork] Add create fork flow entry point at commit warning  <span class="gray">(epic:fork)</span>
+  <span class="green">#8509</span> [Fork] Improve how Desktop handles forks  <span class="gray">(epic:fork, meta)</span>
+
+<b>Issues opened by you</b>
+  <span class="green">#8936</span> [Fork] Hide PR number badges on branches that have an upstream PR  <span class="gray">(epic:fork)</span>
+  <span class="green">#6386</span> Improve no editor detected state on conflicts modal  <span class="gray">(enhancement)</span>
+
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+
+
+  
+  
+    <h3 id="viewing-an-item">Viewing a pull request, issue or repository</h3>
+  
+
+  <h4>In terminal</h4>
+
+  <p>By default, we will display items in the terminal.</p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a pull request in terminal</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr view 21
+<b>Pull request title</b>
+<span class="gray">opened by user. 0 comments. (label)</span>
+
+  Pull request body
+
+<span class="gray">View this pull request on GitHub: https://github.com/owner/repo/pull/21</span>
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing an issue in terminal</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue view 21
+<b>Issue title</b>
+<span class="gray">opened by user. 0 comments. (label)</span>
+
+  Issue body
+
+<span class="gray">View this issue on GitHub: https://github.com/owner/repo/issues/21</span>
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a repository in terminal</span>
+<span class="magenta">~/Projects/my-project</span>$ gh repo view owner/repo
+<b>owner/repo</b>
+<span class="gray">Repository description</span>
+
+  Repository README
+
+<span class="gray">View this repository on GitHub: https://github.com/owner/repo/</span>
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  <h4>In the browser</h4>
+
+  <p>Quickly open an item in the browser using <code>--web</code> or <code>-w</code></p>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a pull request in the browser</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr view 21 --web
+Opening https://github.com/owner/repo/pull/21 in your browser.
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing an issue in the browser</span>
+<span class="magenta">~/Projects/my-project</span>$ gh issue view 21 --web
+Opening https://github.com/owner/repo/issues/21 in your browser.
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing a repository in the browser</span>
+<span class="magenta">~/Projects</span>$ gh repo view owner/repo --web
+Opening https://github.com/owner/repo/ in your browser.
+<span class="magenta">~/Projects</span>$</code></pre>
+    </div>
+  
+
+  
+    <h4>With no arguments</h4>
+  
+
+  
+    <p>We will display the pull request of the branch you're currently on.</p>
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing the pull request of the branch you're on</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr view
+<b>Pull request title</b>
+<span class="gray">opened by user. 0 comments. (label)</span>
+
+  Pull request body
+
+<span class="gray">View this pull request on GitHub: https://github.com/owner/repo/pull/21</span>
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+    <p>We will display the repository you're currently in.</p>
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Viewing the repository you're in</span>
+<span class="magenta">~/Projects/my-project</span>$ gh repo view
+<b>owner/my-project</b>
+<span class="gray">Repository description</span>
+
+  Repository README
+
+<span class="gray">View this repository on GitHub: https://github.com/owner/repo/</span>
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+
+
+        </div>
+      </main></body>
+</html>

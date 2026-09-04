@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_discussion_view"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-discussion-view" data-element-type="Command">gh discussion view</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh discussion view {&lt;number&gt; | &lt;discussion-url&gt; | &lt;comment-id&gt; | &lt;comment-url&gt;} [flags]
+</code></pre></div></div>
+
+<p>Display the title, body, and other information about a discussion.</p>
+
+<p>To see the comments on a discussion, pass <code class="language-plaintext highlighter-rouge">--comments</code>. A few latest replies
+of each comment will also be retrieved regardless of the selected ordering.</p>
+
+<p>To see the full reply thread of a single comment, pass a comment node ID or
+comment URL as the argument instead of a discussion
+(e.g., <code class="language-plaintext highlighter-rouge">https://github.com/OWNER/REPO/discussions/123#discussioncomment-456</code>).</p>
+
+<p>Pagination and ordering can be controlled via <code class="language-plaintext highlighter-rouge">--order</code>, <code class="language-plaintext highlighter-rouge">--limit</code>, and <code class="language-plaintext highlighter-rouge">--after</code> flags.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">--web</code> to open the discussion or comment in a web browser instead.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--after &lt;string&gt;</code>
+</dt>
+	<dd>Cursor for the next page</dd>
+
+	<dt>
+<code>-c</code>, 
+		<code>--comments</code>
+</dt>
+	<dd>View discussion comments</dd>
+
+	<dt>
+<code>-q</code>, 
+		<code>--jq &lt;expression&gt;</code>
+</dt>
+	<dd>Filter JSON output using a jq expression</dd>
+
+	<dt>
+		<code>--json &lt;fields&gt;</code>
+</dt>
+	<dd>Output JSON with the specified fields</dd>
+
+	<dt>
+<code>-L</code>, 
+		<code>--limit &lt;int&gt; (default 30)</code>
+</dt>
+	<dd>Maximum number of comments or replies to fetch</dd>
+
+	<dt>
+		<code>--order &lt;string&gt; (default "newest")</code>
+</dt>
+	<dd>Order of comments or replies: {oldest|newest}</dd>
+
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--template &lt;string&gt;</code>
+</dt>
+	<dd>Format JSON output using a Go template; see "gh help formatting"</dd>
+
+	<dt>
+<code>-w</code>, 
+		<code>--web</code>
+</dt>
+	<dd>Open a discussion in the browser</dd>
+</dl>
+
+<h3 id="json-fields">JSON Fields</h3>
+
+<p><code class="language-plaintext highlighter-rouge">answerChosenAt</code>, <code class="language-plaintext highlighter-rouge">answerChosenBy</code>, <code class="language-plaintext highlighter-rouge">answered</code>, <code class="language-plaintext highlighter-rouge">author</code>, <code class="language-plaintext highlighter-rouge">body</code>, <code class="language-plaintext highlighter-rouge">category</code>, <code class="language-plaintext highlighter-rouge">closed</code>, <code class="language-plaintext highlighter-rouge">closedAt</code>, <code class="language-plaintext highlighter-rouge">comments</code>, <code class="language-plaintext highlighter-rouge">createdAt</code>, <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">labels</code>, <code class="language-plaintext highlighter-rouge">locked</code>, <code class="language-plaintext highlighter-rouge">number</code>, <code class="language-plaintext highlighter-rouge">reactionGroups</code>, <code class="language-plaintext highlighter-rouge">state</code>, <code class="language-plaintext highlighter-rouge">stateReason</code>, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">updatedAt</code>, <code class="language-plaintext highlighter-rouge">url</code></p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># View a discussion by number</span>
+<span class="nv">$ </span>gh discussion view 123
+
+<span class="c"># View a discussion by URL</span>
+<span class="nv">$ </span>gh discussion view https://github.com/OWNER/REPO/discussions/123
+
+<span class="c"># View with comments</span>
+<span class="nv">$ </span>gh discussion view 123 <span class="nt">--comments</span>
+
+<span class="c"># View with oldest comments first</span>
+<span class="nv">$ </span>gh discussion view 123 <span class="nt">--comments</span> <span class="nt">--order</span> oldest
+
+<span class="c"># Limit to 10 comments</span>
+<span class="nv">$ </span>gh discussion view 123 <span class="nt">--comments</span> <span class="nt">--limit</span> 10
+
+<span class="c"># Fetch the next page of comments</span>
+<span class="nv">$ </span>gh discussion view 123 <span class="nt">--comments</span> <span class="nt">--after</span> CURSOR
+
+<span class="c"># View the reply thread of a comment by node ID</span>
+<span class="nv">$ </span>gh discussion view DC_abc123
+
+<span class="c"># View the reply thread of a comment by URL</span>
+<span class="nv">$ </span>gh discussion view <span class="s1">'https://github.com/OWNER/REPO/discussions/123#discussioncomment-456'</span>
+
+<span class="c"># Paginate through replies</span>
+<span class="nv">$ </span>gh discussion view DC_abc123 <span class="nt">--limit</span> 10 <span class="nt">--after</span> CURSOR
+
+<span class="c"># Open in browser</span>
+<span class="nv">$ </span>gh discussion view 123 <span class="nt">--web</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_discussion.html">gh discussion</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

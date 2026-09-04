@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_help_environment"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-environment" data-element-type="Command">gh environment</h2>
+
+<p><code class="language-plaintext highlighter-rouge">GH_TOKEN</code>, <code class="language-plaintext highlighter-rouge">GITHUB_TOKEN</code> (in order of precedence): an authentication token that will be used when
+a command targets either <code class="language-plaintext highlighter-rouge">github.com</code> or a subdomain of <code class="language-plaintext highlighter-rouge">ghe.com</code>. Setting this avoids being prompted to
+authenticate and takes precedence over previously stored credentials.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_ENTERPRISE_TOKEN</code>, <code class="language-plaintext highlighter-rouge">GITHUB_ENTERPRISE_TOKEN</code> (in order of precedence): an authentication
+token that will be used when a command targets a GitHub Enterprise Server host.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_HOST</code>: specify the GitHub hostname for commands where a hostname has not been provided, or
+cannot be inferred from the context of a local Git repository. If this host was previously
+authenticated with, the stored credentials will be used. Otherwise, setting <code class="language-plaintext highlighter-rouge">GH_TOKEN</code> or
+<code class="language-plaintext highlighter-rouge">GH_ENTERPRISE_TOKEN</code> is required, depending on the targeted host.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_REPO</code>: specify the GitHub repository in the <code class="language-plaintext highlighter-rouge">[HOST/]OWNER/REPO</code> format for commands
+that otherwise operate on a local repository.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_EDITOR</code>, <code class="language-plaintext highlighter-rouge">GIT_EDITOR</code>, <code class="language-plaintext highlighter-rouge">VISUAL</code>, <code class="language-plaintext highlighter-rouge">EDITOR</code> (in order of precedence): the editor tool to use
+for authoring text.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_BROWSER</code>, <code class="language-plaintext highlighter-rouge">BROWSER</code> (in order of precedence): the web browser to use for opening links.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_DEBUG</code>: set to a truthy value to enable verbose output on standard error. Set to <code class="language-plaintext highlighter-rouge">api</code>
+to additionally log details of HTTP traffic.</p>
+
+<p><code class="language-plaintext highlighter-rouge">DEBUG</code> (deprecated): set to <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">true</code>, or <code class="language-plaintext highlighter-rouge">yes</code> to enable verbose output on standard
+error.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_PAGER</code>, <code class="language-plaintext highlighter-rouge">PAGER</code> (in order of precedence): a terminal paging program to send standard output
+to, e.g. <code class="language-plaintext highlighter-rouge">less</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GLAMOUR_STYLE</code>: the style to use for rendering Markdown. See
+<a href="https://github.com/charmbracelet/glamour#styles" class="external">https://github.com/charmbracelet/glamour#styles</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">NO_COLOR</code>: set to any value to avoid printing ANSI escape sequences for color output.</p>
+
+<p><code class="language-plaintext highlighter-rouge">CLICOLOR</code>: set to <code class="language-plaintext highlighter-rouge">0</code> to disable printing ANSI colors in output.</p>
+
+<p><code class="language-plaintext highlighter-rouge">CLICOLOR_FORCE</code>: set to a value other than <code class="language-plaintext highlighter-rouge">0</code> to keep ANSI colors in output
+even when the output is piped.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_COLOR_LABELS</code>: set to any value to display labels using their RGB hex color codes in terminals that
+support truecolor.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_ACCESSIBLE_COLORS</code> (preview): set to a truthy value to use customizable, 4-bit accessible colors.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_FORCE_TTY</code>: set to any value to force terminal-style output even when the output is
+redirected. When the value is a number, it is interpreted as the number of columns
+available in the viewport. When the value is a percentage, it will be applied against
+the number of columns available in the current viewport.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_NO_UPDATE_NOTIFIER</code>: set to any value to disable GitHub CLI update notifications.
+When any command is executed, gh checks for new versions once every 24 hours.
+If a newer version was found, an upgrade notice is displayed on standard error.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_NO_EXTENSION_UPDATE_NOTIFIER</code>: set to any value to disable GitHub CLI extension update notifications.
+When an extension is executed, gh checks for new versions for the executed extension once every 24 hours.
+If a newer version was found, an upgrade notice is displayed on standard error.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_EXTENSION</code>: set to <code class="language-plaintext highlighter-rouge">1</code> by gh when it invokes an extension, allowing an extension to
+tell whether it was run as <code class="language-plaintext highlighter-rouge">gh &lt;extension&gt;</code> or directly as a standalone program.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_CONFIG_DIR</code>: the directory where gh will store configuration files. If not specified,
+the default value will be one of the following paths (in order of precedence):</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">$XDG_CONFIG_HOME/gh</code> (if <code class="language-plaintext highlighter-rouge">$XDG_CONFIG_HOME</code> is set),</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">$AppData/GitHub CLI</code> (on Windows if <code class="language-plaintext highlighter-rouge">$AppData</code> is set), or</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">$HOME/.config/gh</code>.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">GH_PROMPT_DISABLED</code>: set to any value to disable interactive prompting in the terminal.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_PATH</code>: set the path to the gh executable, useful for when gh can not properly determine
+its own path such as in the cygwin terminal.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_MDWIDTH</code>: default maximum width for markdown render wrapping.  The max width of lines
+wrapped on the terminal will be taken as the lesser of the terminal width, this value, or 120 if
+not specified.  This value is used, for example, with <code class="language-plaintext highlighter-rouge">pr view</code> subcommand.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_ACCESSIBLE_PROMPTER</code> (preview): set to a truthy value to enable prompts that are
+more compatible with speech synthesis and braille screen readers.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_TELEMETRY</code>: set to <code class="language-plaintext highlighter-rouge">log</code> to print telemetry data to standard error instead of sending it.
+Set to <code class="language-plaintext highlighter-rouge">false</code> or <code class="language-plaintext highlighter-rouge">0</code> to disable telemetry. Takes precedence over <code class="language-plaintext highlighter-rouge">DO_NOT_TRACK</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">DO_NOT_TRACK</code>: set to <code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">1</code> to disable telemetry. Ignored when
+<code class="language-plaintext highlighter-rouge">GH_TELEMETRY</code> is set, which takes precedence.</p>
+
+<p><code class="language-plaintext highlighter-rouge">GH_SPINNER_DISABLED</code>: set to a truthy value to replace the spinner animation with
+a textual progress indicator.</p>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh.html">gh</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

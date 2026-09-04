@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_extension_search"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-extension-search" data-element-type="Command">gh extension search</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh extension search [&lt;query&gt;] [flags]
+</code></pre></div></div>
+
+<p>Search for gh extensions.</p>
+
+<p>With no arguments, this command prints out the first 30 extensions
+available to install sorted by number of stars. More extensions can
+be fetched by specifying a higher limit with the <code class="language-plaintext highlighter-rouge">--limit</code> flag.</p>
+
+<p>When connected to a terminal, this command prints out three columns.
+The first has a ✓ if the extension is already installed locally. The
+second is the full name of the extension repository in <code class="language-plaintext highlighter-rouge">OWNER/REPO</code>
+format. The third is the extension's description.</p>
+
+<p>When not connected to a terminal, the ✓ character is rendered as the
+word "installed" but otherwise the order and content of the columns
+are the same.</p>
+
+<p>This command behaves similarly to <code class="language-plaintext highlighter-rouge">gh search repos</code> but does not
+support as many search qualifiers. For a finer grained search of
+extensions, try using:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh search repos --topic "gh-extension"
+</code></pre></div></div>
+
+<p>and adding qualifiers as needed. See <code class="language-plaintext highlighter-rouge">gh help search repos</code> to learn
+more about repository search.</p>
+
+<p>For listing just the extensions that are already installed locally,
+see:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh ext list
+</code></pre></div></div>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+<code>-q</code>, 
+		<code>--jq &lt;expression&gt;</code>
+</dt>
+	<dd>Filter JSON output using a jq expression</dd>
+
+	<dt>
+		<code>--json &lt;fields&gt;</code>
+</dt>
+	<dd>Output JSON with the specified fields</dd>
+
+	<dt>
+		<code>--license &lt;strings&gt;</code>
+</dt>
+	<dd>Filter based on license type</dd>
+
+	<dt>
+<code>-L</code>, 
+		<code>--limit &lt;int&gt; (default 30)</code>
+</dt>
+	<dd>Maximum number of extensions to fetch</dd>
+
+	<dt>
+		<code>--order &lt;string&gt; (default "desc")</code>
+</dt>
+	<dd>Order of repositories returned, ignored unless '--sort' flag is specified: {asc|desc}</dd>
+
+	<dt>
+		<code>--owner &lt;strings&gt;</code>
+</dt>
+	<dd>Filter on owner</dd>
+
+	<dt>
+		<code>--sort &lt;string&gt; (default "best-match")</code>
+</dt>
+	<dd>Sort fetched repositories: {forks|help-wanted-issues|stars|updated}</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--template &lt;string&gt;</code>
+</dt>
+	<dd>Format JSON output using a Go template; see "gh help formatting"</dd>
+
+	<dt>
+<code>-w</code>, 
+		<code>--web</code>
+</dt>
+	<dd>Open the search query in the web browser</dd>
+</dl>
+
+<h3 id="json-fields">JSON Fields</h3>
+
+<p><code class="language-plaintext highlighter-rouge">createdAt</code>, <code class="language-plaintext highlighter-rouge">defaultBranch</code>, <code class="language-plaintext highlighter-rouge">description</code>, <code class="language-plaintext highlighter-rouge">forksCount</code>, <code class="language-plaintext highlighter-rouge">fullName</code>, <code class="language-plaintext highlighter-rouge">hasDownloads</code>, <code class="language-plaintext highlighter-rouge">hasIssues</code>, <code class="language-plaintext highlighter-rouge">hasPages</code>, <code class="language-plaintext highlighter-rouge">hasProjects</code>, <code class="language-plaintext highlighter-rouge">hasWiki</code>, <code class="language-plaintext highlighter-rouge">homepage</code>, <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">isArchived</code>, <code class="language-plaintext highlighter-rouge">isDisabled</code>, <code class="language-plaintext highlighter-rouge">isFork</code>, <code class="language-plaintext highlighter-rouge">isPrivate</code>, <code class="language-plaintext highlighter-rouge">language</code>, <code class="language-plaintext highlighter-rouge">license</code>, <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">openIssuesCount</code>, <code class="language-plaintext highlighter-rouge">owner</code>, <code class="language-plaintext highlighter-rouge">pushedAt</code>, <code class="language-plaintext highlighter-rouge">size</code>, <code class="language-plaintext highlighter-rouge">stargazersCount</code>, <code class="language-plaintext highlighter-rouge">updatedAt</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">visibility</code>, <code class="language-plaintext highlighter-rouge">watchersCount</code></p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># List the first 30 extensions sorted by star count, descending</span>
+<span class="nv">$ </span>gh ext search
+
+<span class="c"># List more extensions</span>
+<span class="nv">$ </span>gh ext search <span class="nt">--limit</span> 300
+
+<span class="c"># List extensions matching the term "branch"</span>
+<span class="nv">$ </span>gh ext search branch
+
+<span class="c"># List extensions owned by organization "github"</span>
+<span class="nv">$ </span>gh ext search <span class="nt">--owner</span> github
+
+<span class="c"># List extensions, sorting by recently updated, ascending</span>
+<span class="nv">$ </span>gh ext search <span class="nt">--sort</span> updated <span class="nt">--order</span> asc
+
+<span class="c"># List extensions, filtering by license</span>
+<span class="nv">$ </span>gh ext search <span class="nt">--license</span> MIT
+
+<span class="c"># Open search results in the browser</span>
+<span class="nv">$ </span>gh ext search <span class="nt">-w</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_extension.html">gh extension</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

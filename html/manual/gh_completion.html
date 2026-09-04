@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_completion"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-completion" data-element-type="Command">gh completion</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh completion -s &lt;shell&gt;
+</code></pre></div></div>
+
+<p>Generate shell completion scripts for GitHub CLI commands.</p>
+
+<p>When installing GitHub CLI through a package manager, it's possible that
+no additional shell configuration is necessary to gain completion support. For
+Homebrew, see <a href="https://docs.brew.sh/Shell-Completion" class="external">https://docs.brew.sh/Shell-Completion</a></p>
+
+<p>If you need to set up completions manually, follow the instructions below. The exact
+config file locations might vary based on your system. Make sure to restart your
+shell before testing whether completions are working.</p>
+
+<h3 id="bash">bash</h3>
+
+<p>First, ensure that you install <code class="language-plaintext highlighter-rouge">bash-completion</code> using your package manager.</p>
+
+<p>After, add this to your <code class="language-plaintext highlighter-rouge">~/.bash_profile</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eval "$(gh completion -s bash)"
+</code></pre></div></div>
+
+<h3 id="zsh">zsh</h3>
+
+<p>Generate a <code class="language-plaintext highlighter-rouge">_gh</code> completion script and put it somewhere in your <code class="language-plaintext highlighter-rouge">$fpath</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh completion -s zsh &gt; /usr/local/share/zsh/site-functions/_gh
+</code></pre></div></div>
+
+<p>Ensure that the following is present in your <code class="language-plaintext highlighter-rouge">~/.zshrc</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>autoload -U compinit
+compinit -i
+</code></pre></div></div>
+
+<p>Zsh version 5.7 or later is recommended.</p>
+
+<h3 id="fish">fish</h3>
+
+<p>Generate a <code class="language-plaintext highlighter-rouge">gh.fish</code> completion script:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh completion -s fish &gt; ~/.config/fish/completions/gh.fish
+</code></pre></div></div>
+
+<h3 id="powershell">PowerShell</h3>
+
+<p>Open your profile script with:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -Path (Split-Path -Parent $profile) -ErrorAction SilentlyContinue
+notepad $profile
+</code></pre></div></div>
+
+<p>Add the line and save the file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invoke-Expression -Command $(gh completion -s powershell | Out-String)
+</code></pre></div></div>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+<code>-s</code>, 
+		<code>--shell &lt;string&gt;</code>
+</dt>
+	<dd>Shell type: {bash|zsh|fish|powershell}</dd>
+</dl>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh.html">gh</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

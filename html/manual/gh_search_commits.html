@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_search_commits"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-search-commits" data-element-type="Command">gh search commits</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh search commits [&lt;query&gt;] [flags]
+</code></pre></div></div>
+
+<p>Search for commits on GitHub.</p>
+
+<p>The command supports constructing queries using the GitHub search syntax,
+using the parameter and qualifier flags, or a combination of the two.</p>
+
+<p>GitHub search syntax is documented at:
+<a href="https://docs.github.com/search-github/searching-on-github/searching-commits" class="external">https://docs.github.com/search-github/searching-on-github/searching-commits</a></p>
+
+<p>For more information on handling search queries containing a hyphen, run <code class="language-plaintext highlighter-rouge">gh search --help</code>.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--author &lt;string&gt;</code>
+</dt>
+	<dd>Filter by author</dd>
+
+	<dt>
+		<code>--author-date &lt;date&gt;</code>
+</dt>
+	<dd>Filter based on authored date</dd>
+
+	<dt>
+		<code>--author-email &lt;string&gt;</code>
+</dt>
+	<dd>Filter on author email</dd>
+
+	<dt>
+		<code>--author-name &lt;string&gt;</code>
+</dt>
+	<dd>Filter on author name</dd>
+
+	<dt>
+		<code>--committer &lt;string&gt;</code>
+</dt>
+	<dd>Filter by committer</dd>
+
+	<dt>
+		<code>--committer-date &lt;date&gt;</code>
+</dt>
+	<dd>Filter based on committed date</dd>
+
+	<dt>
+		<code>--committer-email &lt;string&gt;</code>
+</dt>
+	<dd>Filter on committer email</dd>
+
+	<dt>
+		<code>--committer-name &lt;string&gt;</code>
+</dt>
+	<dd>Filter on committer name</dd>
+
+	<dt>
+		<code>--hash &lt;string&gt;</code>
+</dt>
+	<dd>Filter by commit hash</dd>
+
+	<dt>
+<code>-q</code>, 
+		<code>--jq &lt;expression&gt;</code>
+</dt>
+	<dd>Filter JSON output using a jq expression</dd>
+
+	<dt>
+		<code>--json &lt;fields&gt;</code>
+</dt>
+	<dd>Output JSON with the specified fields</dd>
+
+	<dt>
+<code>-L</code>, 
+		<code>--limit &lt;int&gt; (default 30)</code>
+</dt>
+	<dd>Maximum number of commits to fetch</dd>
+
+	<dt>
+		<code>--merge</code>
+</dt>
+	<dd>Filter on merge commits</dd>
+
+	<dt>
+		<code>--order &lt;string&gt; (default "desc")</code>
+</dt>
+	<dd>Order of commits returned, ignored unless '--sort' flag is specified: {asc|desc}</dd>
+
+	<dt>
+		<code>--owner &lt;strings&gt;</code>
+</dt>
+	<dd>Filter on repository owner</dd>
+
+	<dt>
+		<code>--parent &lt;string&gt;</code>
+</dt>
+	<dd>Filter by parent hash</dd>
+
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;OWNER/REPO&gt;</code>
+</dt>
+	<dd>Filter on repository, in OWNER/REPO format</dd>
+
+	<dt>
+		<code>--sort &lt;string&gt; (default "best-match")</code>
+</dt>
+	<dd>Sort fetched commits: {author-date|committer-date}</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--template &lt;string&gt;</code>
+</dt>
+	<dd>Format JSON output using a Go template; see "gh help formatting"</dd>
+
+	<dt>
+		<code>--tree &lt;string&gt;</code>
+</dt>
+	<dd>Filter by tree hash</dd>
+
+	<dt>
+		<code>--visibility &lt;strings&gt;</code>
+</dt>
+	<dd>Filter based on repository visibility: {public|private|internal}</dd>
+
+	<dt>
+<code>-w</code>, 
+		<code>--web</code>
+</dt>
+	<dd>Open the search query in the web browser</dd>
+</dl>
+
+<h3 id="json-fields">JSON Fields</h3>
+
+<p><code class="language-plaintext highlighter-rouge">author</code>, <code class="language-plaintext highlighter-rouge">commit</code>, <code class="language-plaintext highlighter-rouge">committer</code>, <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">parents</code>, <code class="language-plaintext highlighter-rouge">repository</code>, <code class="language-plaintext highlighter-rouge">sha</code>, <code class="language-plaintext highlighter-rouge">url</code></p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Search commits matching set of keywords "readme" and "typo"</span>
+<span class="nv">$ </span>gh search commits readme typo
+
+<span class="c"># Search commits matching phrase "bug fix"</span>
+<span class="nv">$ </span>gh search commits <span class="s2">"bug fix"</span>
+
+<span class="c"># Search commits using raw search qualifiers as separate arguments</span>
+<span class="nv">$ </span>gh search commits fix author:monalisa merge:false
+
+<span class="c"># Search commits committed by user "monalisa"</span>
+<span class="nv">$ </span>gh search commits <span class="nt">--committer</span><span class="o">=</span>monalisa
+
+<span class="c"># Search commits authored by users with name "Jane Doe"</span>
+<span class="nv">$ </span>gh search commits <span class="nt">--author-name</span><span class="o">=</span><span class="s2">"Jane Doe"</span>
+
+<span class="c"># Search commits matching hash "8dd03144ffdc6c0d486d6b705f9c7fba871ee7c3"</span>
+<span class="nv">$ </span>gh search commits <span class="nt">--hash</span><span class="o">=</span>8dd03144ffdc6c0d486d6b705f9c7fba871ee7c3
+
+<span class="c"># Search commits authored before February 1st, 2022</span>
+<span class="nv">$ </span>gh search commits <span class="nt">--author-date</span><span class="o">=</span><span class="s2">"&lt;2022-02-01"</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_search.html">gh search</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

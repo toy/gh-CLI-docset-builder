@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_api"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-api" data-element-type="Command">gh api</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh api &lt;endpoint&gt; [flags]
+</code></pre></div></div>
+
+<p>Makes an authenticated HTTP request to the GitHub API and prints the response.</p>
+
+<p>The endpoint argument should either be a path of a GitHub API v3 endpoint, or
+<code class="language-plaintext highlighter-rouge">graphql</code> to access the GitHub API v4.</p>
+
+<p>Placeholder values <code class="language-plaintext highlighter-rouge">{owner}</code>, <code class="language-plaintext highlighter-rouge">{repo}</code>, and <code class="language-plaintext highlighter-rouge">{branch}</code> in the endpoint
+argument will get replaced with values from the repository of the current
+directory or the repository specified in the <code class="language-plaintext highlighter-rouge">GH_REPO</code> environment variable.
+Note that in some shells, for example PowerShell, you may need to enclose
+any value that contains <code class="language-plaintext highlighter-rouge">{...}</code> in quotes to prevent the shell from
+applying special meaning to curly braces.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">-p/--preview</code> flag enables opting into previews, which are feature-flagged,
+experimental API endpoints or behaviors. The API expects opt-in via the <code class="language-plaintext highlighter-rouge">Accept</code>
+header with format <code class="language-plaintext highlighter-rouge">application/vnd.github.&lt;preview-name&gt;-preview+json</code> and this
+command facilitates that via <code class="language-plaintext highlighter-rouge">--preview &lt;preview-name&gt;</code>. To send a request for
+the corsair and scarlet witch previews, you could use <code class="language-plaintext highlighter-rouge">-p corsair,scarlet-witch</code>
+or <code class="language-plaintext highlighter-rouge">--preview corsair --preview scarlet-witch</code>.</p>
+
+<p>The default HTTP request method is <code class="language-plaintext highlighter-rouge">GET</code> normally and <code class="language-plaintext highlighter-rouge">POST</code> if any parameters
+were added. Override the method with <code class="language-plaintext highlighter-rouge">--method</code>.</p>
+
+<p>Pass one or more <code class="language-plaintext highlighter-rouge">-f/--raw-field</code> values in <code class="language-plaintext highlighter-rouge">key=value</code> format to add static string
+parameters to the request payload. To add non-string or placeholder-determined values, see
+<code class="language-plaintext highlighter-rouge">-F/--field</code> below. Note that adding request parameters will automatically switch the
+request method to <code class="language-plaintext highlighter-rouge">POST</code>. To send the parameters as a <code class="language-plaintext highlighter-rouge">GET</code> query string instead, use
+<code class="language-plaintext highlighter-rouge">--method GET</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">-F/--field</code> flag has magic type conversion based on the format of the value:</p>
+
+<ul>
+  <li>literal values <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>, <code class="language-plaintext highlighter-rouge">null</code>, and integer numbers get converted to
+appropriate JSON types;</li>
+  <li>placeholder values <code class="language-plaintext highlighter-rouge">{owner}</code>, <code class="language-plaintext highlighter-rouge">{repo}</code>, and <code class="language-plaintext highlighter-rouge">{branch}</code> get populated with values
+from the repository of the current directory;</li>
+  <li>if the value starts with <code class="language-plaintext highlighter-rouge">@</code>, the rest of the value is interpreted as a
+filename to read the value from. Pass <code class="language-plaintext highlighter-rouge">-</code> to read from standard input.</li>
+</ul>
+
+<p>For GraphQL requests, all fields other than <code class="language-plaintext highlighter-rouge">query</code> and <code class="language-plaintext highlighter-rouge">operationName</code> are
+interpreted as GraphQL variables.</p>
+
+<p>To pass nested parameters in the request payload, use <code class="language-plaintext highlighter-rouge">key[subkey]=value</code> syntax when
+declaring fields. To pass nested values as arrays, declare multiple fields with the
+syntax <code class="language-plaintext highlighter-rouge">key[]=value1</code>, <code class="language-plaintext highlighter-rouge">key[]=value2</code>. To pass an empty array, use <code class="language-plaintext highlighter-rouge">key[]</code> without a
+value.</p>
+
+<p>To pass pre-constructed JSON or payloads in other formats, a request body may be read
+from file specified by <code class="language-plaintext highlighter-rouge">--input</code>. Use <code class="language-plaintext highlighter-rouge">-</code> to read from standard input. When passing the
+request body this way, any parameters specified via field flags are added to the query
+string of the endpoint URL.</p>
+
+<p>In <code class="language-plaintext highlighter-rouge">--paginate</code> mode, all pages of results will sequentially be requested until
+there are no more pages of results. For GraphQL requests, this requires that the
+original query accepts an <code class="language-plaintext highlighter-rouge">$endCursor: String</code> variable and that it fetches the
+<code class="language-plaintext highlighter-rouge">pageInfo{ hasNextPage, endCursor }</code> set of fields from a collection. Each page is a separate
+JSON array or object. Pass <code class="language-plaintext highlighter-rouge">--slurp</code> to wrap all pages of JSON arrays or objects
+into an outer JSON array.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--allow-escape-sequences</code>
+</dt>
+	<dd>Allow printing terminal escape sequences</dd>
+
+	<dt>
+		<code>--cache &lt;duration&gt;</code>
+</dt>
+	<dd>Cache the response, e.g. "3600s", "60m", "1h"</dd>
+
+	<dt>
+<code>-F</code>, 
+		<code>--field &lt;key=value&gt;</code>
+</dt>
+	<dd>Add a typed parameter in key=value format (use "@&lt;path&gt;" or "@-" to read value from file or stdin)</dd>
+
+	<dt>
+<code>-H</code>, 
+		<code>--header &lt;key:value&gt;</code>
+</dt>
+	<dd>Add a HTTP request header in key:value format</dd>
+
+	<dt>
+		<code>--hostname &lt;string&gt;</code>
+</dt>
+	<dd>The GitHub hostname for the request (default "github.com")</dd>
+
+	<dt>
+<code>-i</code>, 
+		<code>--include</code>
+</dt>
+	<dd>Include HTTP response status line and headers in the output</dd>
+
+	<dt>
+		<code>--input &lt;file&gt;</code>
+</dt>
+	<dd>The file to use as body for the HTTP request (use "-" to read from standard input)</dd>
+
+	<dt>
+<code>-q</code>, 
+		<code>--jq &lt;string&gt;</code>
+</dt>
+	<dd>Query to select values from the response using jq syntax</dd>
+
+	<dt>
+<code>-X</code>, 
+		<code>--method &lt;string&gt; (default "GET")</code>
+</dt>
+	<dd>The HTTP method for the request</dd>
+
+	<dt>
+		<code>--paginate</code>
+</dt>
+	<dd>Make additional HTTP requests to fetch all pages of results</dd>
+
+	<dt>
+<code>-p</code>, 
+		<code>--preview &lt;strings&gt;</code>
+</dt>
+	<dd>Opt into GitHub API previews (names should omit '-preview')</dd>
+
+	<dt>
+<code>-f</code>, 
+		<code>--raw-field &lt;key=value&gt;</code>
+</dt>
+	<dd>Add a string parameter in key=value format</dd>
+
+	<dt>
+		<code>--silent</code>
+</dt>
+	<dd>Do not print the response body</dd>
+
+	<dt>
+		<code>--slurp</code>
+</dt>
+	<dd>Use with "--paginate" to return an array of all pages of either JSON arrays or objects</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--template &lt;string&gt;</code>
+</dt>
+	<dd>Format JSON output using a Go template; see "gh help formatting"</dd>
+
+	<dt>
+		<code>--verbose</code>
+</dt>
+	<dd>Include full HTTP request and response in the output</dd>
+</dl>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># List releases in the current repository</span>
+<span class="nv">$ </span>gh api repos/<span class="o">{</span>owner<span class="o">}</span>/<span class="o">{</span>repo<span class="o">}</span>/releases
+
+<span class="c"># Post an issue comment</span>
+<span class="nv">$ </span>gh api repos/<span class="o">{</span>owner<span class="o">}</span>/<span class="o">{</span>repo<span class="o">}</span>/issues/123/comments <span class="nt">-f</span> <span class="nv">body</span><span class="o">=</span><span class="s1">'Hi from CLI'</span>
+
+<span class="c"># Post nested parameter read from a file</span>
+<span class="nv">$ </span>gh api gists <span class="nt">-F</span> <span class="s1">'files[myfile.txt][content]=@myfile.txt'</span>
+
+<span class="c"># Add parameters to a GET request</span>
+<span class="nv">$ </span>gh api <span class="nt">-X</span> GET search/issues <span class="nt">-f</span> <span class="nv">q</span><span class="o">=</span><span class="s1">'repo:cli/cli is:open remote'</span>
+
+<span class="c"># Use a JSON file as request body</span>
+<span class="nv">$ </span>gh api repos/<span class="o">{</span>owner<span class="o">}</span>/<span class="o">{</span>repo<span class="o">}</span>/rulesets <span class="nt">--input</span> file.json
+
+<span class="c"># Set a custom HTTP header</span>
+<span class="nv">$ </span>gh api <span class="nt">-H</span> <span class="s1">'Accept: application/vnd.github.v3.raw+json'</span> ...
+
+<span class="c"># Opt into GitHub API previews</span>
+<span class="nv">$ </span>gh api <span class="nt">--preview</span> baptiste,nebula ...
+
+<span class="c"># Print only specific fields from the response</span>
+<span class="nv">$ </span>gh api repos/<span class="o">{</span>owner<span class="o">}</span>/<span class="o">{</span>repo<span class="o">}</span>/issues <span class="nt">--jq</span> <span class="s1">'.[].title'</span>
+
+<span class="c"># Use a template for the output</span>
+<span class="nv">$ </span>gh api repos/<span class="o">{</span>owner<span class="o">}</span>/<span class="o">{</span>repo<span class="o">}</span>/issues <span class="nt">--template</span> <span class="se">\</span>
+  <span class="s1">'{{range .}}{{.title}} ({{.labels | pluck "name" | join ", " | color "yellow"}}){{"\n"}}{{end}}'</span>
+
+<span class="c"># Update allowed values of the "environment" custom property in a deeply nested array</span>
+<span class="nv">$ </span>gh api <span class="nt">-X</span> PATCH /orgs/<span class="o">{</span>org<span class="o">}</span>/properties/schema <span class="se">\</span>
+   <span class="nt">-F</span> <span class="s1">'properties[][property_name]=environment'</span> <span class="se">\</span>
+   <span class="nt">-F</span> <span class="s1">'properties[][default_value]=production'</span> <span class="se">\</span>
+   <span class="nt">-F</span> <span class="s1">'properties[][allowed_values][]=staging'</span> <span class="se">\</span>
+   <span class="nt">-F</span> <span class="s1">'properties[][allowed_values][]=production'</span>
+
+<span class="c"># List releases with GraphQL</span>
+<span class="nv">$ </span>gh api graphql <span class="nt">-F</span> <span class="nv">owner</span><span class="o">=</span><span class="s1">'{owner}'</span> <span class="nt">-F</span> <span class="nv">name</span><span class="o">=</span><span class="s1">'{repo}'</span> <span class="nt">-f</span> <span class="nv">query</span><span class="o">=</span><span class="s1">'
+  query($name: String!, $owner: String!) {
+    repository(owner: $owner, name: $name) {
+      releases(last: 3) {
+        nodes { tagName }
+      }
+    }
+  }
+'</span>
+
+<span class="c"># List all repositories for a user</span>
+<span class="nv">$ </span>gh api graphql <span class="nt">--paginate</span> <span class="nt">-f</span> <span class="nv">query</span><span class="o">=</span><span class="s1">'
+  query($endCursor: String) {
+    viewer {
+      repositories(first: 100, after: $endCursor) {
+        nodes { nameWithOwner }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+  }
+'</span>
+
+<span class="c"># Get the percentage of forks for the current user</span>
+<span class="nv">$ </span>gh api graphql <span class="nt">--paginate</span> <span class="nt">--slurp</span> <span class="nt">-f</span> <span class="nv">query</span><span class="o">=</span><span class="s1">'
+  query($endCursor: String) {
+    viewer {
+      repositories(first: 100, after: $endCursor) {
+        nodes { isFork }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+  }
+'</span> | jq <span class="s1">'def count(e): reduce e as $_ (0;.+1);
+[.[].data.viewer.repositories.nodes[]] as $r | count(select($r[].isFork))/count($r[])'</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh.html">gh</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

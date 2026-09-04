@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_release_create"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-release-create" data-element-type="Command">gh release create</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh release create [&lt;tag&gt;] [&lt;filename&gt;... | &lt;pattern&gt;...]
+</code></pre></div></div>
+
+<p>Create a new GitHub Release for a repository.</p>
+
+<p>A list of asset files may be given to upload to the new release. To define a
+display label for an asset, append text starting with <code class="language-plaintext highlighter-rouge">#</code> after the file name.</p>
+
+<p>If a matching git tag does not yet exist, one will automatically get created
+from the latest state of the default branch.
+Use <code class="language-plaintext highlighter-rouge">--target</code> to point to a different branch or commit for the automatic tag creation.
+Use <code class="language-plaintext highlighter-rouge">--verify-tag</code> to abort the release if the tag doesn't already exist.
+To fetch the new tag locally after the release, do <code class="language-plaintext highlighter-rouge">git fetch --tags origin</code>.</p>
+
+<p>To create a release from an annotated git tag, first create one locally with
+git, push the tag to GitHub, then run this command.
+Use <code class="language-plaintext highlighter-rouge">--notes-from-tag</code> to get the release notes from the annotated git tag.
+If the tag is not annotated, the commit message will be used instead.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">--generate-notes</code> to automatically generate notes using GitHub Release Notes API.
+When using automatically generated release notes, a release title will also be automatically
+generated unless a title was explicitly passed. Additional release notes can be prepended to
+automatically generated notes by using the <code class="language-plaintext highlighter-rouge">--notes</code> flag.</p>
+
+<p>By default, the release is created even if there are no new commits since the last release.
+This may result in the same or duplicate release which may not be desirable in some cases.
+Use <code class="language-plaintext highlighter-rouge">--fail-on-no-commits</code> to fail if no new commits are available. This flag has no
+effect if there are no existing releases or this is the very first release.</p>
+
+<h2 id="immutable-releases">Immutable Releases</h2>
+
+<p>When release immutability is enabled for a repository, the following protections are enforced:</p>
+<ul>
+  <li>Git tags associated with a release cannot be modified or deleted.</li>
+  <li>Release assets cannot be modified or deleted.</li>
+</ul>
+
+<p>Immutability is enforced only after a release is published. Draft releases can be modified
+or deleted, and the associated git tags can be modified or deleted as well.</p>
+
+<p>When using the <code class="language-plaintext highlighter-rouge">create</code> command to attach assets to a release, separate API calls
+are made to create the release as a draft, upload the assets, and then publish the release.
+Immutability protections will be enforced ONLY after the release is published.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--discussion-category &lt;string&gt;</code>
+</dt>
+	<dd>Start a discussion in the specified category</dd>
+
+	<dt>
+<code>-d</code>, 
+		<code>--draft</code>
+</dt>
+	<dd>Save the release as a draft instead of publishing it</dd>
+
+	<dt>
+		<code>--fail-on-no-commits</code>
+</dt>
+	<dd>Fail if there are no commits since the last release (no impact on the first release)</dd>
+
+	<dt>
+		<code>--generate-notes</code>
+</dt>
+	<dd>Automatically generate title and notes for the release via GitHub Release Notes API</dd>
+
+	<dt>
+		<code>--latest</code>
+</dt>
+	<dd>Mark this release as "Latest" (default [automatic based on date and version]). --latest=false to explicitly NOT set as latest</dd>
+
+	<dt>
+<code>-n</code>, 
+		<code>--notes &lt;string&gt;</code>
+</dt>
+	<dd>Release notes</dd>
+
+	<dt>
+<code>-F</code>, 
+		<code>--notes-file &lt;file&gt;</code>
+</dt>
+	<dd>Read release notes from file (use "-" to read from standard input)</dd>
+
+	<dt>
+		<code>--notes-from-tag</code>
+</dt>
+	<dd>Fetch notes from the tag annotation or message of commit associated with tag</dd>
+
+	<dt>
+		<code>--notes-start-tag &lt;string&gt;</code>
+</dt>
+	<dd>Tag to use as the starting point for generating release notes</dd>
+
+	<dt>
+<code>-p</code>, 
+		<code>--prerelease</code>
+</dt>
+	<dd>Mark the release as a prerelease</dd>
+
+	<dt>
+		<code>--target &lt;branch&gt;</code>
+</dt>
+	<dd>Target branch or full commit SHA (default [main branch])</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--title &lt;string&gt;</code>
+</dt>
+	<dd>Release title</dd>
+
+	<dt>
+		<code>--verify-tag</code>
+</dt>
+	<dd>Abort in case the git tag doesn't already exist in the remote repository</dd>
+</dl>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<dl class="flags">
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+</dl>
+
+<h3 id="aliases">ALIASES</h3>
+
+<p>gh release new</p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Interactively create a release</span>
+<span class="nv">$ </span>gh release create
+
+<span class="c"># Interactively create a release from specific tag</span>
+<span class="nv">$ </span>gh release create v1.2.3
+
+<span class="c"># Non-interactively create a release</span>
+<span class="nv">$ </span>gh release create v1.2.3 <span class="nt">--notes</span> <span class="s2">"bugfix release"</span>
+
+<span class="c"># Use automatically generated via GitHub Release Notes API release notes</span>
+<span class="nv">$ </span>gh release create v1.2.3 <span class="nt">--generate-notes</span>
+
+<span class="c"># Use release notes from a file</span>
+<span class="nv">$ </span>gh release create v1.2.3 <span class="nt">-F</span> release-notes.md
+
+<span class="c"># Use tag annotation or associated commit message as notes</span>
+<span class="nv">$ </span>gh release create v1.2.3 <span class="nt">--notes-from-tag</span>
+
+<span class="c"># Don't mark the release as latest</span>
+<span class="nv">$ </span>gh release create v1.2.3 <span class="nt">--latest</span><span class="o">=</span><span class="nb">false</span>
+
+<span class="c"># Upload all tarballs in a directory as release assets</span>
+<span class="nv">$ </span>gh release create v1.2.3 ./dist/<span class="k">*</span>.tgz
+
+<span class="c"># Upload a release asset with a display label</span>
+<span class="nv">$ </span>gh release create v1.2.3 <span class="s1">'/path/to/asset.zip#My display label'</span>
+
+<span class="c"># Create a release and start a discussion</span>
+<span class="nv">$ </span>gh release create v1.2.3 <span class="nt">--discussion-category</span> <span class="s2">"General"</span>
+
+<span class="c"># Create a release only if there are new commits available since the last release</span>
+<span class="nv">$ </span>gh release create v1.2.3 <span class="nt">--fail-on-no-commits</span></code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_release.html">gh release</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

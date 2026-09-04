@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_pr_create"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-pr-create" data-element-type="Command">gh pr create</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh pr create [flags]
+</code></pre></div></div>
+
+<p>Create a pull request on GitHub.</p>
+
+<p>Upon success, the URL of the created pull request will be printed.</p>
+
+<p>When the current branch isn't fully pushed to a git remote, a prompt will ask where
+to push the branch and offer an option to fork the base repository. Any fork created this
+way will only have the default branch of the upstream repository. Use <code class="language-plaintext highlighter-rouge">--head</code> to
+explicitly skip any forking or pushing behavior.</p>
+
+<p><code class="language-plaintext highlighter-rouge">--head</code> supports <code class="language-plaintext highlighter-rouge">&lt;user&gt;:&lt;branch&gt;</code> syntax to select a head repo owned by <code class="language-plaintext highlighter-rouge">&lt;user&gt;</code>.
+Using an organization as the <code class="language-plaintext highlighter-rouge">&lt;user&gt;</code> is currently not supported.
+For more information, see <a href="https://github.com/cli/cli/issues/10093" class="external">https://github.com/cli/cli/issues/10093</a></p>
+
+<p>A prompt will also ask for the title and the body of the pull request. Use <code class="language-plaintext highlighter-rouge">--title</code> and
+<code class="language-plaintext highlighter-rouge">--body</code> to skip this, or use <code class="language-plaintext highlighter-rouge">--fill</code> to autofill these values from git commits.
+It's important to notice that if the <code class="language-plaintext highlighter-rouge">--title</code> and/or <code class="language-plaintext highlighter-rouge">--body</code> are also provided
+alongside <code class="language-plaintext highlighter-rouge">--fill</code>, the values specified by <code class="language-plaintext highlighter-rouge">--title</code> and/or <code class="language-plaintext highlighter-rouge">--body</code> will
+take precedence and overwrite any autofilled content.</p>
+
+<p>The base branch for the created PR can be specified using the <code class="language-plaintext highlighter-rouge">--base</code> flag. If not provided,
+the value of <code class="language-plaintext highlighter-rouge">gh-merge-base</code> git branch config will be used. If not configured, the repository's
+default branch will be used. Run <code class="language-plaintext highlighter-rouge">git config branch.{current}.gh-merge-base {base}</code> to configure
+the current branch to use the specified merge base.</p>
+
+<p>Link an issue to the pull request by referencing the issue in the body of the pull
+request. If the body text mentions <code class="language-plaintext highlighter-rouge">Fixes #123</code> or <code class="language-plaintext highlighter-rouge">Closes #123</code>, the referenced issue
+will automatically get closed when the pull request gets merged.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">--attach</code> to upload an image or video. The attachment is appended to the
+body. If the body references an attached file, such as <code class="language-plaintext highlighter-rouge">![alt](./login.png)</code>, that
+reference is rewritten to point at the uploaded asset instead.
+You can attach up to 50 files per command.</p>
+
+<p>Alt text for an image follows the path after <code class="language-plaintext highlighter-rouge">#</code>, as in
+<code class="language-plaintext highlighter-rouge">--attach './login.png#The login error state'</code>. Without it the filename is used.
+A reference already in the body keeps the alt text written there. Video renders
+as a player and has no alt text, so it cannot be given any.</p>
+
+<p>If some attachments upload and others fail, the pull request is still created with the
+ones that succeeded. The command then exits with a non-zero status, but the new pull
+request's URL is still printed to stdout.</p>
+
+<p>By default, users with write access to the base repository can push new commits to the
+head branch of the pull request. Disable this with <code class="language-plaintext highlighter-rouge">--no-maintainer-edit</code>.</p>
+
+<p>Adding a pull request to projects requires authorization with the <code class="language-plaintext highlighter-rouge">project</code> scope.
+To authorize, run <code class="language-plaintext highlighter-rouge">gh auth refresh -s project</code>.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+<code>-a</code>, 
+		<code>--assignee &lt;login&gt;</code>
+</dt>
+	<dd>Assign people by their login. Use "@me" to self-assign.</dd>
+
+	<dt>
+		<code>--attach &lt;file&gt;</code>
+</dt>
+	<dd>Attach an image or video file, in '&lt;file&gt;#&lt;image alt text&gt;' format</dd>
+
+	<dt>
+<code>-B</code>, 
+		<code>--base &lt;branch&gt;</code>
+</dt>
+	<dd>The branch into which you want your code merged</dd>
+
+	<dt>
+<code>-b</code>, 
+		<code>--body &lt;string&gt;</code>
+</dt>
+	<dd>Body for the pull request</dd>
+
+	<dt>
+<code>-F</code>, 
+		<code>--body-file &lt;file&gt;</code>
+</dt>
+	<dd>Read body text from file (use "-" to read from standard input)</dd>
+
+	<dt>
+<code>-d</code>, 
+		<code>--draft</code>
+</dt>
+	<dd>Mark pull request as a draft</dd>
+
+	<dt>
+		<code>--dry-run</code>
+</dt>
+	<dd>Print details instead of creating the PR. May still push git changes.</dd>
+
+	<dt>
+<code>-e</code>, 
+		<code>--editor</code>
+</dt>
+	<dd>Skip prompts and open the text editor to write the title and body in. The first line is the title and the remaining text is the body.</dd>
+
+	<dt>
+<code>-f</code>, 
+		<code>--fill</code>
+</dt>
+	<dd>Use commit info for title and body</dd>
+
+	<dt>
+		<code>--fill-first</code>
+</dt>
+	<dd>Use first commit info for title and body</dd>
+
+	<dt>
+		<code>--fill-verbose</code>
+</dt>
+	<dd>Use commits msg+body for description</dd>
+
+	<dt>
+<code>-H</code>, 
+		<code>--head &lt;branch&gt;</code>
+</dt>
+	<dd>The branch that contains commits for your pull request (default [current branch])</dd>
+
+	<dt>
+<code>-l</code>, 
+		<code>--label &lt;name&gt;</code>
+</dt>
+	<dd>Add labels by name</dd>
+
+	<dt>
+<code>-m</code>, 
+		<code>--milestone &lt;name&gt;</code>
+</dt>
+	<dd>Add the pull request to a milestone by name</dd>
+
+	<dt>
+		<code>--no-maintainer-edit</code>
+</dt>
+	<dd>Disable maintainer's ability to modify pull request</dd>
+
+	<dt>
+<code>-p</code>, 
+		<code>--project &lt;title&gt;</code>
+</dt>
+	<dd>Add the pull request to projects by title</dd>
+
+	<dt>
+		<code>--recover &lt;string&gt;</code>
+</dt>
+	<dd>Recover input from a failed run of create</dd>
+
+	<dt>
+<code>-r</code>, 
+		<code>--reviewer &lt;handle&gt;</code>
+</dt>
+	<dd>Request reviews from people or teams by their handle</dd>
+
+	<dt>
+<code>-T</code>, 
+		<code>--template &lt;file&gt;</code>
+</dt>
+	<dd>Template file to use as starting body text</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--title &lt;string&gt;</code>
+</dt>
+	<dd>Title for the pull request</dd>
+
+	<dt>
+<code>-w</code>, 
+		<code>--web</code>
+</dt>
+	<dd>Open the web browser to create a pull request</dd>
+</dl>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<dl class="flags">
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+</dl>
+
+<h3 id="aliases">ALIASES</h3>
+
+<p>gh pr new</p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gh <span class="nb">pr </span>create <span class="nt">--title</span> <span class="s2">"The bug is fixed"</span> <span class="nt">--body</span> <span class="s2">"Everything works again"</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>create <span class="nt">--reviewer</span> monalisa,hubot  <span class="nt">--reviewer</span> myorg/team-name
+<span class="nv">$ </span>gh <span class="nb">pr </span>create <span class="nt">--project</span> <span class="s2">"Roadmap"</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>create <span class="nt">--base</span> develop <span class="nt">--head</span> monalisa:feature
+<span class="nv">$ </span>gh <span class="nb">pr </span>create <span class="nt">--template</span> <span class="s2">"pull_request_template.md"</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>create <span class="nt">--attach</span> <span class="s1">'./login.png#The login error state'</span>
+<span class="nv">$ </span>gh <span class="nb">pr </span>create <span class="nt">--attach</span> ./before.png <span class="nt">--attach</span> ./after.png</code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_pr.html">gh pr</a></li>
+</ul>
+
+          
+
+
+
+
+  
+    <h3>In use</h3>
+  
+  
+
+  <h4>Interactively</h4>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create a pull request interactively</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr create
+Creating pull request for <span class="cyan">feature-branch</span> into <span class="cyan">main</span> in owner/repo
+<b>? Title</b> My new pull request
+<b>? Body</b> <span class="gray">[(e) to launch nano, enter to skip]</span>
+http://github.com/owner/repo/pull/1
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+
+  <h4>With flags</h4>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray"># Create a pull request using flags</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr create --title "Pull request title" --body "Pull request body"
+http://github.com/owner/repo/pull/1
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+
+  <h4>In the browser</h4>
+
+  
+    <div class="width-full">
+      <pre class="terminal"><code><span class="gray">// Quickly navigate to the pull request creation page</span>
+<span class="magenta">~/Projects/my-project</span>$ gh pr create --web
+Opening https://github.com/owner/repo/pull/branch in your browser.
+<span class="magenta">~/Projects/my-project</span>$</code></pre>
+    </div>
+  
+
+  
+
+  
+    <h4>Working with forks</h4>
+    <p>
+      This command will automatically create a fork for you if you're in a repository that you don't have permission to
+      push to.
+    </p>
+  
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>
