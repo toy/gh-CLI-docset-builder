@@ -7,7 +7,7 @@
   <meta http-equiv="content-language" content="en-gb">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" type="text/css" href="../style.css%3Ff6b744016f6dc597ed5643b43cbeeb9696614ab0.css">
+  <link rel="stylesheet" type="text/css" href="../style.css%3Fcaa828f98b735ee3c8e5aff84798d54e5010ee79.css">
   
   
   <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -116,7 +116,8 @@ the default value will be one of the following paths (in order of precedence):</
 <p><code class="language-plaintext highlighter-rouge">GH_PROMPT_DISABLED</code>: set to any value to disable interactive prompting in the terminal.</p>
 
 <p><code class="language-plaintext highlighter-rouge">GH_PATH</code>: set the path to the gh executable, useful for when gh can not properly determine
-its own path such as in the cygwin terminal.</p>
+its own path such as in the cygwin terminal. gh also sets this when invoking extensions so they
+can call back into the same gh executable.</p>
 
 <p><code class="language-plaintext highlighter-rouge">GH_MDWIDTH</code>: default maximum width for markdown render wrapping.  The max width of lines
 wrapped on the terminal will be taken as the lesser of the terminal width, this value, or 120 if
