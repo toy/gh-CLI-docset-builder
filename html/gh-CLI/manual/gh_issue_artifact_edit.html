@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3F5420ff30340b12e30d5134e6a24d4359b82bd067.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_issue_artifact_edit"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-issue-artifact-edit" data-element-type="Command">gh issue artifact edit</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh issue artifact edit {&lt;issue&gt; &lt;artifact-number&gt; | &lt;artifact-url&gt;} [flags]
+</code></pre></div></div>
+
+<p>Rename an issue artifact or replace its content. The type never changes, so a
+link's new content must be an http(s) URL or a <code class="language-plaintext highlighter-rouge">.url</code> Internet Shortcut file.</p>
+
+<p>Name the artifact by its issue and number, or by its URL. <code class="language-plaintext highlighter-rouge">&lt;issue&gt;</code> is an
+issue number or URL.</p>
+
+<p>With only <code class="language-plaintext highlighter-rouge">--attach</code>, the attachments are appended to the current content.</p>
+
+<p>With <code class="language-plaintext highlighter-rouge">--restore-version</code>, an earlier version's name and content are saved as a
+new version. <code class="language-plaintext highlighter-rouge">gh issue artifact view</code> shows the edit history.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--attach &lt;file&gt;</code>
+</dt>
+	<dd>Attach an image or video file, in '&lt;file&gt;#&lt;image alt text&gt;' format</dd>
+
+	<dt>
+<code>-b</code>, 
+		<code>--body &lt;string&gt;</code>
+</dt>
+	<dd>New content; for a link, a URL</dd>
+
+	<dt>
+<code>-F</code>, 
+		<code>--body-file &lt;file&gt;</code>
+</dt>
+	<dd>Read new content from file (use "-" to read from standard input)</dd>
+
+	<dt>
+		<code>--name &lt;string&gt;</code>
+</dt>
+	<dd>New name</dd>
+
+	<dt>
+		<code>--restore-version &lt;number&gt; (default 0)</code>
+</dt>
+	<dd>Restore the version with this number from the edit history</dd>
+</dl>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<dl class="flags">
+	<dt>
+<code>-R</code>, 
+		<code>--repo &lt;[HOST/]OWNER/REPO&gt;</code>
+</dt>
+	<dd>Select another repository using the [HOST/]OWNER/REPO format</dd>
+</dl>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Rename an artifact</span>
+<span class="nv">$ </span>gh issue artifact edit 142 2 <span class="nt">--name</span> <span class="s1">'OAuth callback plan v2'</span>
+
+<span class="c"># Replace a document's content with a file</span>
+<span class="nv">$ </span>gh issue artifact edit 142 2 <span class="nt">--body-file</span> 2-OAuth-callback-plan.md
+
+<span class="c"># Point a link at a new URL</span>
+<span class="nv">$ </span>gh issue artifact edit 142 3 <span class="nt">--body</span> https://github.com/monalisa/monas-cafe/wiki/OAuth-runbook-v2
+
+<span class="c"># Append an image to a document</span>
+<span class="nv">$ </span>gh issue artifact edit 142 2 <span class="nt">--attach</span> ./signin-flow.png
+
+<span class="c"># Restore an earlier version</span>
+<span class="nv">$ </span>gh issue artifact edit 142 2 <span class="nt">--restore-version</span> 5</code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_issue_artifact.html">gh issue artifact</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>

@@ -7,7 +7,7 @@
   <meta http-equiv="content-language" content="en-gb">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" type="text/css" href="../style.css%3F1d8220411922660306f81120dfad8bdbf40aa52e.css">
+  <link rel="stylesheet" type="text/css" href="../style.css%3F5420ff30340b12e30d5134e6a24d4359b82bd067.css">
   
   
   <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -79,12 +79,15 @@ effect if there are no existing releases or this is the very first release.</p>
   <li>Release assets cannot be modified or deleted.</li>
 </ul>
 
-<p>Immutability is enforced only after a release is published. Draft releases can be modified
-or deleted, and the associated git tags can be modified or deleted as well.</p>
+<p>When you attach assets, <code class="language-plaintext highlighter-rouge">gh release create</code> creates a draft release, uploads
+each asset, and then publishes the release. These steps use separate API requests
+and do not form a single atomic operation. If you specify <code class="language-plaintext highlighter-rouge">--draft</code>, the command
+leaves the release unpublished.</p>
 
-<p>When using the <code class="language-plaintext highlighter-rouge">create</code> command to attach assets to a release, separate API calls
-are made to create the release as a draft, upload the assets, and then publish the release.
-Immutability protections will be enforced ONLY after the release is published.</p>
+<p>When release immutability is enabled for the repository, its protections take effect
+only when the release is published. While the release remains a draft, users and
+workflows with the required permissions can modify it and its assets, including while
+this command is running.</p>
 
 <h3 id="options">Options</h3>
 

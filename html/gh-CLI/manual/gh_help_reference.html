@@ -7,7 +7,7 @@
   <meta http-equiv="content-language" content="en-gb">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" type="text/css" href="../style.css%3F1d8220411922660306f81120dfad8bdbf40aa52e.css">
+  <link rel="stylesheet" type="text/css" href="../style.css%3F5420ff30340b12e30d5134e6a24d4359b82bd067.css">
   
   
   <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -208,6 +208,7 @@
 <p>Log in to a GitHub account</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-c, --clipboard             Copy one-time OAuth device code to clipboard
+    --expiring              Prefer expiring credentials that gh refreshes automatically, if the host supports them
 -p, --git-protocol string   The protocol to use for git operations on this host: {ssh|https}
 -h, --hostname string       The hostname of the GitHub instance to authenticate with
     --insecure-storage      Save authentication credentials in plain text instead of credential store
@@ -230,6 +231,7 @@
 <p>Refresh stored authentication credentials</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-c, --clipboard               Copy one-time OAuth device code to clipboard
+    --expiring                Prefer expiring credentials that gh refreshes automatically, if the host supports them
 -h, --hostname string         The GitHub host to use for authentication
     --insecure-storage        Save authentication credentials in plain text instead of credential store
 -r, --remove-scopes strings   Authentication scopes to remove from gh
@@ -253,6 +255,7 @@
 -h, --hostname string   Check only a specific hostname's auth status
     --jq expression     Filter JSON output using a jq expression
     --json fields       Output JSON with the specified fields
+    --no-refresh        Do not automatically refresh expired tokens
 -t, --show-token        Display the auth token
     --template string   Format JSON output using a Go template; see "gh help formatting"
 </code></pre></div></div>
@@ -270,6 +273,7 @@
 <p>Print the authentication token gh uses for a hostname and account</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-h, --hostname string   The hostname of the GitHub instance authenticated with
+    --no-refresh        Do not automatically refresh an expired token
 -u, --user string       The account to output the token for
 </code></pre></div></div>
 
@@ -795,6 +799,80 @@
 <h2 id="gh-issue-command"><code class="language-plaintext highlighter-rouge">gh issue &lt;command&gt;</code></h2>
 
 <p>Manage issues</p>
+
+<h3 id="gh-issue-artifact-command"><code class="language-plaintext highlighter-rouge">gh issue artifact &lt;command&gt;</code></h3>
+
+<p>Work with issue artifacts (preview)</p>
+
+<h4 id="gh-issue-artifact-create-issue-number--issue-url-filename--url-flags"><code class="language-plaintext highlighter-rouge">gh issue artifact create {&lt;issue-number&gt; | &lt;issue-url&gt;} [&lt;file&gt;[#&lt;name&gt;] | &lt;url&gt;]... [flags]</code></h4>
+
+<p>Create issue artifacts (preview)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    --attach file      Attach an image or video file, in '&lt;file&gt;#&lt;image alt text&gt;' format
+-b, --body string      Content for a single document
+-F, --body-file file   Read content for a single artifact from file (use "-" to read from standard input)
+    --name string      Name for a single artifact
+    --type string      Type for documents: {generic|plan|embedded_html}
+</code></pre></div></div>
+
+<p>Aliases</p>
+
+<p>gh issue artifact new</p>
+
+<h4 id="gh-issue-artifact-delete-issue-artifact-number--artifact-url-flags"><code class="language-plaintext highlighter-rouge">gh issue artifact delete {&lt;issue&gt; &lt;artifact-number&gt;... | &lt;artifact-url&gt;...} [flags]</code></h4>
+
+<p>Delete issue artifacts (preview)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--yes   Confirm deletion without prompting
+</code></pre></div></div>
+
+<h4 id="gh-issue-artifact-download-issue-artifact-number--artifact-url-flags"><code class="language-plaintext highlighter-rouge">gh issue artifact download {&lt;issue&gt; [&lt;artifact-number&gt;...] | &lt;artifact-url&gt;...} [flags]</code></h4>
+
+<p>Download issue artifacts (preview)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    --clobber          Overwrite existing files of the same name
+-D, --dir directory    The directory to download files into (default ".")
+-O, --output file      The file to write a single artifact to (use "-" to write to standard output)
+    --skip-existing    Skip downloading when files of the same name exist
+    --version number   Download the version with this number from the edit history
+</code></pre></div></div>
+
+<h4 id="gh-issue-artifact-edit-issue-artifact-number--artifact-url-flags"><code class="language-plaintext highlighter-rouge">gh issue artifact edit {&lt;issue&gt; &lt;artifact-number&gt; | &lt;artifact-url&gt;} [flags]</code></h4>
+
+<p>Edit an issue artifact (preview)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    --attach file              Attach an image or video file, in '&lt;file&gt;#&lt;image alt text&gt;' format
+-b, --body string              New content; for a link, a URL
+-F, --body-file file           Read new content from file (use "-" to read from standard input)
+    --name string              New name
+    --restore-version number   Restore the version with this number from the edit history
+</code></pre></div></div>
+
+<h4 id="gh-issue-artifact-list-issue-number--issue-url-flags"><code class="language-plaintext highlighter-rouge">gh issue artifact list {&lt;issue-number&gt; | &lt;issue-url&gt;} [flags]</code></h4>
+
+<p>List artifacts on an issue (preview)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-q, --jq expression     Filter JSON output using a jq expression
+    --json fields       Output JSON with the specified fields
+-L, --limit int         Maximum number of artifacts to fetch
+-t, --template string   Format JSON output using a Go template; see "gh help formatting"
+    --type string       Filter by type: {generic|plan|link|embedded_html}
+</code></pre></div></div>
+
+<p>Aliases</p>
+
+<p>gh issue artifact ls</p>
+
+<h4 id="gh-issue-artifact-view-issue-artifact-number--artifact-url-flags"><code class="language-plaintext highlighter-rouge">gh issue artifact view {&lt;issue&gt; &lt;artifact-number&gt; | &lt;artifact-url&gt;} [flags]</code></h4>
+
+<p>View an issue artifact (preview)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-q, --jq expression     Filter JSON output using a jq expression
+    --json fields       Output JSON with the specified fields
+-t, --template string   Format JSON output using a Go template; see "gh help formatting"
+    --version number    Show the version with this number from the edit history
+-w, --web               Open a document's page on GitHub, or a link's URL
+</code></pre></div></div>
 
 <h3 id="gh-issue-close-number--url-flags"><code class="language-plaintext highlighter-rouge">gh issue close {&lt;number&gt; | &lt;url&gt;} [flags]</code></h3>
 

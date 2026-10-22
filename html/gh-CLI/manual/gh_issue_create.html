@@ -7,7 +7,7 @@
   <meta http-equiv="content-language" content="en-gb">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" type="text/css" href="../style.css%3F1d8220411922660306f81120dfad8bdbf40aa52e.css">
+  <link rel="stylesheet" type="text/css" href="../style.css%3F5420ff30340b12e30d5134e6a24d4359b82bd067.css">
   
   
   <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -49,7 +49,8 @@
 
 <p>Use <code class="language-plaintext highlighter-rouge">--attach</code> to upload an image or video. The attachment is appended to the
 body. If the body references an attached file, such as <code class="language-plaintext highlighter-rouge">![alt](./login.png)</code>, that
-reference is rewritten to point at the uploaded asset instead.
+reference is rewritten to point at the uploaded asset instead. Paths in a
+<code class="language-plaintext highlighter-rouge">--body-file</code> are relative to its directory, falling back to the working directory.
 You can attach up to 50 files per command.</p>
 
 <p>Alt text for an image follows the path after <code class="language-plaintext highlighter-rouge">#</code>, as in

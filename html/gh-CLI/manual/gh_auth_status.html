@@ -7,7 +7,7 @@
   <meta http-equiv="content-language" content="en-gb">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" type="text/css" href="../style.css%3F1d8220411922660306f81120dfad8bdbf40aa52e.css">
+  <link rel="stylesheet" type="text/css" href="../style.css%3F5420ff30340b12e30d5134e6a24d4359b82bd067.css">
   
   
   <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -54,6 +54,8 @@ Each host section will indicate the active account, which will be used when targ
 the command will exit with 1 and output to stderr. Note that when using the <code class="language-plaintext highlighter-rouge">--json</code> option, the command
 will always exit with zero regardless of any authentication issues, unless there is a fatal error.</p>
 
+<p>Any expired or near-expiry token that supports refreshing is refreshed automatically, unless <code class="language-plaintext highlighter-rouge">--no-refresh</code> is given.</p>
+
 <p>To change the active account for a host, see <code class="language-plaintext highlighter-rouge">gh auth switch</code>.</p>
 
 <h3 id="options">Options</h3>
@@ -80,6 +82,11 @@ will always exit with zero regardless of any authentication issues, unless there
 		<code>--json &lt;fields&gt;</code>
 </dt>
 	<dd>Output JSON with the specified fields</dd>
+
+	<dt>
+		<code>--no-refresh</code>
+</dt>
+	<dd>Do not automatically refresh expired tokens</dd>
 
 	<dt>
 <code>-t</code>, 

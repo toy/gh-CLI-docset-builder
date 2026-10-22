@@ -7,7 +7,7 @@
   <meta http-equiv="content-language" content="en-gb">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" type="text/css" href="../style.css%3F1d8220411922660306f81120dfad8bdbf40aa52e.css">
+  <link rel="stylesheet" type="text/css" href="../style.css%3F5420ff30340b12e30d5134e6a24d4359b82bd067.css">
   
   
   <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -62,6 +62,16 @@ the default set of scopes for your auth flow.</p>
 inactive account, you will have to use <code class="language-plaintext highlighter-rouge">gh auth switch</code> to that account first before using
 this command, and then switch back when you are done.</p>
 
+<p>Use <code class="language-plaintext highlighter-rouge">--expiring</code> to prefer expiring credentials that gh refreshes automatically, or
+<code class="language-plaintext highlighter-rouge">--expiring=false</code> to prefer a non-expiring token. This is a preference, not a guarantee:
+whether expiring tokens are issued depends on the host and the OAuth app configuration. A host
+without support issues a non-expiring token instead, and a host configured for them may issue
+expiring tokens even without the flag. Without the flag, refresh keeps the current token's kind,
+so an expiring token stays expiring and a non-expiring token stays non-expiring.
+When using expiring credentials for git operations, git 2.46 or newer is recommended so
+gh can mark the token as non-cacheable; with older git a credential caching helper may store
+and reuse an expired token.</p>
+
 <p>For more information on OAuth scopes, see
 <a href="https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps/" class="external">https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps/</a>.</p>
 
@@ -73,6 +83,11 @@ this command, and then switch back when you are done.</p>
 		<code>--clipboard</code>
 </dt>
 	<dd>Copy one-time OAuth device code to clipboard</dd>
+
+	<dt>
+		<code>--expiring</code>
+</dt>
+	<dd>Prefer expiring credentials that gh refreshes automatically, if the host supports them</dd>
 
 	<dt>
 <code>-h</code>, 
