@@ -7,7 +7,7 @@
   <meta http-equiv="content-language" content="en-gb">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" type="text/css" href="../style.css%3F5e4a27be76fb25b90b1892ef53ef8f1f4233dc38.css">
+  <link rel="stylesheet" type="text/css" href="../style.css%3Fbf57940a647637a0dacb8f84e9d150c3ab3251cd.css">
   
   
   <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -53,6 +53,12 @@
 and you will be prompted for confirmation. To delete the current repository non-interactively, 
 specify it explicitly (e.g., <code class="language-plaintext highlighter-rouge">gh repo delete owner/repo --yes</code>).</p>
 
+<p>Deleting a private repository that is not itself a fork also deletes its forks, including
+forks you may not be able to see. If it has forks, you will be asked to confirm deleting
+them, even with <code class="language-plaintext highlighter-rouge">--yes</code>. Pass <code class="language-plaintext highlighter-rouge">--accept-cascading-deletion-of-private-forks</code>
+to skip that prompt. When not running interactively, it is required along with <code class="language-plaintext highlighter-rouge">--yes</code>.
+Like <code class="language-plaintext highlighter-rouge">--yes</code>, it is ignored when no repository argument is provided.</p>
+
 <p>Deletion requires authorization with the <code class="language-plaintext highlighter-rouge">delete_repo</code> scope.
 To authorize, run <code class="language-plaintext highlighter-rouge">gh auth refresh -s delete_repo</code></p>
 
@@ -60,9 +66,14 @@ To authorize, run <code class="language-plaintext highlighter-rouge">gh auth ref
 
 <dl class="flags">
 	<dt>
+		<code>--accept-cascading-deletion-of-private-forks</code>
+</dt>
+	<dd>Accept that deleting a private repository also deletes its forks</dd>
+
+	<dt>
 		<code>--yes</code>
 </dt>
-	<dd>Confirm deletion without prompting</dd>
+	<dd>Confirm deletion without prompting for confirmation</dd>
 </dl>
 
 <h3 id="see-also">See also</h3>
