@@ -7,7 +7,7 @@
   <meta http-equiv="content-language" content="en-gb">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" type="text/css" href="../style.css%3Fbf57940a647637a0dacb8f84e9d150c3ab3251cd.css">
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff395b0710cad62184ce389c106f88e99d347ed84.css">
   
   
   <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -57,6 +57,12 @@ the operation will fail with an error.</p>
 <p>Additionally, due to similar platform constraints, some log lines may not be
 associated with a specific step within a job. In these cases, the step name will
 appear as <code class="language-plaintext highlighter-rouge">UNKNOWN STEP</code> in the log output.</p>
+
+<p>This command shows a snapshot. To wait for the workflow runs of a pull request on <code class="language-plaintext highlighter-rouge">github.com</code> to
+finish, use <code class="language-plaintext highlighter-rouge">gh event listen</code> with the
+<code class="language-plaintext highlighter-rouge">com.github.pull_request.check_suite.status.changed.v1</code> event instead of polling this command. Each
+check suite, such as a workflow run, sends its own event when it completes. Changes made before the listener
+starts are not reported, so read the checks once it is listening.</p>
 
 <h3 id="options">Options</h3>
 

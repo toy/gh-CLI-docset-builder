@@ -7,7 +7,7 @@
   <meta http-equiv="content-language" content="en-gb">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" type="text/css" href="../style.css%3Fbf57940a647637a0dacb8f84e9d150c3ab3251cd.css">
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff395b0710cad62184ce389c106f88e99d347ed84.css">
   
   
   <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -624,6 +624,66 @@
     --order string            Order of comments or replies: {oldest|newest} (default "newest")
 -t, --template string         Format JSON output using a Go template; see "gh help formatting"
 -w, --web[=true|false]        Open a discussion in the browser
+</code></pre></div></div>
+
+<h2 id="gh-event-command"><code class="language-plaintext highlighter-rouge">gh event &lt;command&gt;</code></h2>
+
+<p>Listen to GitHub events (preview)</p>
+
+<h3 id="gh-event-listen-flags"><code class="language-plaintext highlighter-rouge">gh event listen [flags]</code></h3>
+
+<p>Wait for events on a specific resource</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    --count int             Exit after this many events (default 1)
+    --event type            Event type to listen to; repeat or separate with commas for more than one
+    --follow[=true|false]   Keep listening for events until stopped
+-q, --jq expression         Filter each event using a jq expression
+    --resource string       URL of the pull request to listen to
+    --subscription string   ID of an existing subscription to listen to
+-t, --template string       Format each event using a Go template; see "gh help formatting"
+    --timeout duration      Exit with status 8 after this long, in seconds or as a duration such as 30s or 10m
+</code></pre></div></div>
+
+<h3 id="gh-event-subscription-command"><code class="language-plaintext highlighter-rouge">gh event subscription &lt;command&gt;</code></h3>
+
+<p>Manage event subscriptions (preview)</p>
+
+<h4 id="gh-event-subscription-create-flags"><code class="language-plaintext highlighter-rouge">gh event subscription create [flags]</code></h4>
+
+<p>Create an event subscription (preview)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    --event type        Event type to subscribe to; repeat or separate with commas for more than one
+-q, --jq expression     Filter JSON output using a jq expression
+    --json fields       Output JSON with the specified fields
+    --resource string   URL of the resource to subscribe to
+-t, --template string   Format JSON output using a Go template; see "gh help formatting"
+</code></pre></div></div>
+
+<h4 id="gh-event-subscription-delete-id"><code class="language-plaintext highlighter-rouge">gh event subscription delete &lt;id&gt;</code></h4>
+
+<p>Delete an event subscription (preview)</p>
+
+<h4 id="gh-event-subscription-list-flags"><code class="language-plaintext highlighter-rouge">gh event subscription list [flags]</code></h4>
+
+<p>List event subscriptions (preview)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-q, --jq expression     Filter JSON output using a jq expression
+    --json fields       Output JSON with the specified fields
+-L, --limit int         Maximum number of subscriptions to list (default 30)
+-t, --template string   Format JSON output using a Go template; see "gh help formatting"
+</code></pre></div></div>
+
+<p>Aliases</p>
+
+<p>gh event subscription ls</p>
+
+<h4 id="gh-event-subscription-view-id-flags"><code class="language-plaintext highlighter-rouge">gh event subscription view &lt;id&gt; [flags]</code></h4>
+
+<p>View an event subscription (preview)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-q, --jq expression     Filter JSON output using a jq expression
+    --json fields       Output JSON with the specified fields
+-t, --template string   Format JSON output using a Go template; see "gh help formatting"
 </code></pre></div></div>
 
 <h2 id="gh-extension"><code class="language-plaintext highlighter-rouge">gh extension</code></h2>

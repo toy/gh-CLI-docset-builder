@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="dark" data-dark-theme="dark" class="dash-ignore-dark-mode">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="../assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="../style.css%3Ff395b0710cad62184ce389c106f88e99d347ed84.css">
+  
+  
+  <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  
+  
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>GitHub CLI | Take GitHub to the command line</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="GitHub CLI">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Take GitHub to the command line">
+<meta name="twitter:description" property="og:description" content="Take GitHub to the command line">
+<meta property="og:site_name" content="GitHub CLI">
+<meta property="og:image" content="/assets/images/social-card.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/assets/images/social-card.png">
+<meta name="twitter:title" content="GitHub CLI">
+<meta name="twitter:site" content="@github">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Take GitHub to the command line","headline":"GitHub CLI","image":"/assets/images/social-card.png","url":"/manual/gh_event_subscription_create"}</script>
+<!-- End Jekyll SEO tag -->
+
+<style>a.external::after {
+  content: "↗";
+  padding-left: 0.25em;
+}
+</style>
+</head>
+
+  <body class="manual"><main id="main" class="main-content color-bg-subtle markdown-body col-12 pt-7 pb-12 px-3 px-md-6">
+        <div>
+          <h2 id="gh-event-subscription-create" data-element-type="Command">gh event subscription create</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh event subscription create [flags]
+</code></pre></div></div>
+
+<p>Create a subscription to events of the given types on a resource, without listening to it.</p>
+
+<p>Pass the resource URL with <code class="language-plaintext highlighter-rouge">--resource</code> and the event types with <code class="language-plaintext highlighter-rouge">--event</code>, repeating the flag
+or separating types with commas:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">com.github.pull_request.review.submitted.v1</code>: a review was submitted</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">com.github.pull_request.state.changed.v1</code>: the pull request was merged, closed, reopened, marked ready for review, or converted to draft</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">com.github.pull_request.head.changed.v1</code>: the head branch changed, for example after a push</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">com.github.pull_request.merge_conflict.v1</code>: the pull request has a merge conflict</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">com.github.pull_request.check_suite.status.changed.v1</code>: a check suite on the head commit completed, such as a CI workflow</li>
+</ul>
+
+<p>Creating a subscription is idempotent: if an active subscription for the same resource and
+event types exists, it is returned instead.</p>
+
+<p>Once successful, the command prints the subscription ID to stdout. Use
+<code class="language-plaintext highlighter-rouge">gh event listen --subscription</code> to receive its events. To create a subscription and listen
+to it in one step, use <code class="language-plaintext highlighter-rouge">gh event listen --resource</code> instead.</p>
+
+<h3 id="options">Options</h3>
+
+<dl class="flags">
+	<dt>
+		<code>--event &lt;type&gt;</code>
+</dt>
+	<dd>Event type to subscribe to; repeat or separate with commas for more than one</dd>
+
+	<dt>
+<code>-q</code>, 
+		<code>--jq &lt;expression&gt;</code>
+</dt>
+	<dd>Filter JSON output using a jq expression</dd>
+
+	<dt>
+		<code>--json &lt;fields&gt;</code>
+</dt>
+	<dd>Output JSON with the specified fields</dd>
+
+	<dt>
+		<code>--resource &lt;string&gt;</code>
+</dt>
+	<dd>URL of the resource to subscribe to</dd>
+
+	<dt>
+<code>-t</code>, 
+		<code>--template &lt;string&gt;</code>
+</dt>
+	<dd>Format JSON output using a Go template; see "gh help formatting"</dd>
+</dl>
+
+<h3 id="json-fields">JSON Fields</h3>
+
+<p><code class="language-plaintext highlighter-rouge">createdAt</code>, <code class="language-plaintext highlighter-rouge">eventTypes</code>, <code class="language-plaintext highlighter-rouge">eventsUrl</code>, <code class="language-plaintext highlighter-rouge">expiresAt</code>, <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">resourceUrl</code>, <code class="language-plaintext highlighter-rouge">url</code></p>
+
+<h3 id="examples">Examples</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Subscribe to reviews and state changes of a pull request</span>
+<span class="nv">$ </span>gh event subscription create <span class="nt">--resource</span> https://github.com/OWNER/REPO/pull/123 <span class="nt">--event</span> com.github.pull_request.review.submitted.v1,com.github.pull_request.state.changed.v1</code></pre></figure>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="gh_event_subscription.html">gh event subscription</a></li>
+</ul>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </main></body>
+</html>
